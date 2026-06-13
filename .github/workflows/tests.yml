@@ -1,5 +1,8 @@
 name: tests
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
   pull_request:
@@ -21,4 +24,3 @@ jobs:
         run: pytest -q
       - name: Score repository
         run: python tools/score_repository.py
-
