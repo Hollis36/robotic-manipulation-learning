@@ -101,3 +101,6 @@ The goal of this repository is not only to learn chapters, but to produce visibl
 
 Pick the smallest project that forces integration across at least three stack layers. A narrow but complete project is better than a broad demo that hides assumptions.
 
+## Visual Standard
+
+Each capstone should include at least one generated figure or animation. The current visual baseline is `docs/casebook_visual_index.md`.

@@ -49,6 +49,6 @@ Status: full-course overview completed via adapted `dse-loop`; chapter-by-chapte
 - [x] Review README and casebook entries for public clarity.
 - [x] Add deep course companion, external resources, learning tracks, Drake setup, and capstone portfolio docs.
 - [x] Add repository quality scoring and GitHub Actions tests.
-- [ ] Add small output plots where they clarify the idea.
+- [x] Add small output plots where they clarify the idea.
 - [x] Create a GitHub repository.
 - [x] Push a stable version into `main`.

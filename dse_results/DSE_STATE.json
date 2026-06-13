@@ -1,5 +1,5 @@
 {
-  "iteration": 21,
+  "iteration": 22,
   "status": "completed",
   "task": "Adapted DSE learning loop over Robotic Manipulation PDFs and repository quality dimensions",
   "objective": "maximize teaching readiness and repository quality",
@@ -9,7 +9,7 @@
     "primary_artifact": "docs/deep_course_companion.md",
     "quality_score_command": "python tools/score_repository.py"
   },
-  "total_iterations": 22,
+  "total_iterations": 23,
   "timeout": "2h",
   "patience_counter": 0,
   "constraint": "Do not reproduce long source passages; keep PDFs out of Git."

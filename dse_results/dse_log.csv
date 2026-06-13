@@ -21,3 +21,4 @@ iteration,pdf,pages,section_count,artifact,coverage_score,constraint_met,notes
 19,quality_capstones,0,0,docs/capstone_portfolio.md,95,yes,"Portfolio-grade project ladder added."
 20,quality_standard,0,0,docs/repository_quality_standard.md,95,yes,"Quality rubric and scoring loop added."
 21,quality_ci_score,0,0,tools/score_repository.py,100,yes,"Repository scoring script and CI workflow added."
+22,quality_casebook_visuals,0,0,docs/casebook_visual_index.md,100,yes,"Generated one visual asset per casebook example and added CLI-tested figure generator."

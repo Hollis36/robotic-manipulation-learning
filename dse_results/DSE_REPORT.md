@@ -65,3 +65,12 @@ New artifacts:
 - `tools/score_repository.py`
 - `.github/workflows/tests.yml`
 
+## Visualization Pass
+
+The next DSE target was casebook presentation quality. The repository now includes generated PNG figures for all nine casebook examples, plus a visual index page. The figures are generated from code using a tested CLI:
+
+```bash
+python tools/generate_casebook_figures.py docs/assets/casebook
+```
+
+This improves the repository's usefulness as a GitHub learning artifact: readers can inspect the main idea of each case before running it.

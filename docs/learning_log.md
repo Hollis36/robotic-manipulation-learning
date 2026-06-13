@@ -82,6 +82,23 @@ Next quality target:
 
 - Add small generated plots or animations to the casebook where they improve understanding.
 
+## 2026-06-13 Casebook Visualization Pass
+
+Added generated visual assets for all nine casebook examples.
+
+Artifacts produced:
+
+- `tools/generate_casebook_figures.py`
+- `docs/assets/casebook/*.png`
+- `docs/casebook_visual_index.md`
+- `tests/test_casebook_figures.py`
+
+Quality checks:
+
+- Figure generation works from Python API and CLI.
+- CLI works without manually setting `PYTHONPATH`.
+- Repository score now tracks `visual_assets`.
+
 
 ## Reflection Template
 

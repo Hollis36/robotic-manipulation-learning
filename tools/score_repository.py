@@ -52,6 +52,7 @@ def score_repository(root: Path) -> dict:
 
     ci_required = [root / ".github" / "workflows" / "tests.yml"]
     ci_passed = _count_existing(ci_required)
+    visual_assets = list((root / "docs" / "assets" / "casebook").glob("*.png")) if (root / "docs" / "assets" / "casebook").exists() else []
 
     categories = {
         "top_level_docs": _category(round(top_level_passed / len(top_level_required) * 100), top_level_passed, len(top_level_required)),
@@ -60,15 +61,17 @@ def score_repository(root: Path) -> dict:
         "tests": _category(round(min(len(tests), 8) / 8 * 100), len(tests), 8),
         "deep_learning_docs": _category(round(docs_passed / len(tools_required) * 100), docs_passed, len(tools_required)),
         "ci": _category(round(ci_passed / len(ci_required) * 100), ci_passed, len(ci_required)),
+        "visual_assets": _category(round(min(len(visual_assets), 9) / 9 * 100), len(visual_assets), 9),
     }
 
     weights = {
         "top_level_docs": 0.15,
         "chapter_coverage": 0.2,
-        "casebook": 0.2,
+        "casebook": 0.16,
         "tests": 0.15,
-        "deep_learning_docs": 0.2,
+        "deep_learning_docs": 0.16,
         "ci": 0.1,
+        "visual_assets": 0.08,
     }
     total_score = round(sum(categories[name]["score"] * weight for name, weight in weights.items()))
     recommendations = []
@@ -90,4 +93,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

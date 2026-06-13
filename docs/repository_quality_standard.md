@@ -7,6 +7,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Every chapter has learner-owned notes.
 - Every major concept connects to a runnable case or planned lab.
 - Every case has a README, run command, expected output, and chapter link.
+- Every case has a generated visual asset when a picture clarifies the idea.
 - Every advanced topic has a clear prerequisite.
 - Failure modes are documented, not hidden.
 
@@ -25,6 +26,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - External resources are cited and separated from original notes.
 - PDFs are not committed.
 - CI runs tests on push and pull request.
+- Casebook figures are generated from code, not hand-edited.
 
 ## Study Quality
 
@@ -43,3 +45,8 @@ python tools/score_repository.py
 
 Use low-scoring categories to choose the next improvement pass.
 
+Generate visual assets:
+
+```bash
+python tools/generate_casebook_figures.py docs/assets/casebook
+```

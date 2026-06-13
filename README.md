@@ -33,6 +33,7 @@ references/ How local source PDFs are used without republishing them.
 | build portfolio projects | `docs/capstone_portfolio.md` |
 | check authoritative references | `docs/external_resources.md` |
 | see the repository quality bar | `docs/repository_quality_standard.md` |
+| browse casebook figures | `docs/casebook_visual_index.md` |
 
 ## First Casebook Track
 
@@ -52,6 +53,7 @@ references/ How local source PDFs are used without republishing them.
 
 - 11 chapter folders are scaffolded for reading notes, exercises, concept work, and future Drake labs.
 - 9 runnable casebook examples are available.
+- 9 generated casebook figures are available in `docs/casebook_visual_index.md`.
 - Core utilities are covered by pytest tests.
 - Drake labs are intentionally documented as future work until pydrake is configured.
 
@@ -75,6 +77,12 @@ Score repository quality:
 
 ```bash
 python tools/score_repository.py
+```
+
+Generate casebook figures:
+
+```bash
+python tools/generate_casebook_figures.py docs/assets/casebook
 ```
 
 ## Learning Principles

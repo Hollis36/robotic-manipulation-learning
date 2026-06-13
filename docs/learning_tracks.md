@@ -26,7 +26,7 @@ Use these tracks depending on the goal of a study session. They share the same c
 | Case | Modification Task | Skill Tested |
 | --- | --- | --- |
 | `001` | Add inverse transform and tests | frame reasoning |
-| `002` | Add link endpoint visualization | kinematics |
+| `002` | Add link endpoint visualization variants | kinematics |
 | `003` | Add unreachable-target handling | numerical IK |
 | `004` | Add outliers and compare error | geometric perception |
 | `005` | Add collision penalty | grasp scoring |
@@ -34,6 +34,8 @@ Use these tracks depending on the goal of a study session. They share the same c
 | `007` | Compare underdamped and overdamped gains | control |
 | `008` | Add mask noise and downstream effect | perception interface |
 | `009` | Add Q-learning baseline | RL environment design |
+
+Visual reference: `docs/casebook_visual_index.md`
 
 ## Track C: Drake Transition
 
@@ -79,4 +81,3 @@ Process:
 3. Identify the course chapter it extends.
 4. Add one note to `docs/research_notes.md`.
 5. Add one experiment idea to `docs/capstone_portfolio.md`.
-
