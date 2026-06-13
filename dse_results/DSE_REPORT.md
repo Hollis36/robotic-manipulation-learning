@@ -141,3 +141,13 @@ The next DSE target was guided learning quality. A runnable book is useful, but 
 - `Practice Task`
 
 The generated notebooks preserve these sections through `tools/generate_jupyter_book_notebooks.py`, so future notebook regeneration will not remove the teaching layer. The repository scorer now tracks `book_learning_scaffold` as a separate category.
+
+## Book Visual Design Pass
+
+The next DSE target was page-level visual quality. The book previously had runnable notebooks and learning scaffolds, but the pages still read like plain text. The repository now includes a generated visual system for the book:
+
+- `docs/book_visual_philosophy.md`
+- `tools/generate_book_figures.py`
+- `book/assets/figures/*.png`
+
+Every book page embeds a dedicated generated figure. The images use a shared Kinematic Atlas style: clean technical diagrams, sparse labels, and a consistent palette for robot state, perception, contact, planning, control, and learning. The repository scorer now tracks `book_visuals` as a separate category.

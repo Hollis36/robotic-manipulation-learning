@@ -2,6 +2,8 @@
 
 机器人操作的核心不是某一个算法，而是一个闭环系统：
 
+![Manipulation stack closed loop](assets/figures/00_manipulation_stack.png)
+
 ```text
 task goal
   -> robot body and sensors

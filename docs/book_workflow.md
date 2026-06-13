@@ -25,6 +25,7 @@ This runs:
 - `make test`
 - `make score`
 - `make casebook`
+- `make book-figures`
 - `make notebooks`
 - `make book-build`
 
@@ -68,6 +69,26 @@ The notebooks are generated from `tools/generate_jupyter_book_notebooks.py` so t
 
 ```bash
 make notebooks
+```
+
+## Regenerate Book Figures
+
+The page figures are generated from `tools/generate_book_figures.py` and stored in `book/assets/figures/`:
+
+```bash
+make book-figures
+```
+
+Run this after changing the visual design script or before rebuilding the book.
+
+## Rebuild Generated Learning Assets
+
+To refresh both generated layers:
+
+```bash
+make book-figures
+make notebooks
+make book-build
 ```
 
 After regenerating, run:

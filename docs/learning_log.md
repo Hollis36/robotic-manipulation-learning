@@ -214,6 +214,28 @@ Next quality target:
 
 - Add self-check answer keys or reflection templates for the practice tasks.
 
+## 2026-06-13 Book Visual Design Pass
+
+Added a dedicated visual system for the Jupyter Book pages.
+
+Artifacts produced:
+
+- `docs/book_visual_philosophy.md`
+- `tools/generate_book_figures.py`
+- `book/assets/figures/*.png`
+- `tests/test_book_figures.py`
+
+Quality checks:
+
+- Every book page embeds a dedicated generated figure.
+- The figure generator creates 10 high-resolution PNG files.
+- `make verify` now regenerates book figures before rebuilding notebooks and HTML.
+- Repository score now tracks `book_visuals`.
+
+Next quality target:
+
+- Add answer keys or self-check rubrics below the practice tasks.
+
 
 ## Reflection Template
 

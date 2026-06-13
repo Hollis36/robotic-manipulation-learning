@@ -1,4 +1,4 @@
-.PHONY: test score casebook book-install book-build book-serve book-clean notebooks verify
+.PHONY: test score casebook book-install book-build book-serve book-clean book-figures notebooks verify
 
 test:
 	pytest -q
@@ -26,4 +26,7 @@ book-serve:
 book-clean:
 	python -c "from pathlib import Path; import shutil; p = Path('book/_build'); shutil.rmtree(p) if p.exists() else None"
 
-verify: test score casebook notebooks book-build
+book-figures:
+	python tools/generate_book_figures.py
+
+verify: test score casebook book-figures notebooks book-build

@@ -2,6 +2,8 @@
 
 在写 IK、planning 或 control 前，必须先知道软件里控制的“机器人”是什么。
 
+![Robot setup station schematic](assets/figures/01_robot_setup.png)
+
 一个 manipulation system 通常包含：
 
 ```text

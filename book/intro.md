@@ -2,6 +2,8 @@
 
 这本 Jupyter Book 是本仓库的交互式学习入口。它把课程主线、章节笔记、可运行案例和生成图统一成一本可执行教材。
 
+![Learning atlas overview](assets/figures/intro.png)
+
 ## Learning Objectives
 
 - Build a system-level view of robotic manipulation before diving into algorithms.

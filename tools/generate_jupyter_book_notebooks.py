@@ -36,9 +36,17 @@ def code(source: str) -> dict:
     }
 
 
-def learning_scaffold(summary: str, objectives: list[str], checkpoint: list[str], practice: str) -> str:
+def learning_scaffold(
+    summary: str,
+    objectives: list[str],
+    checkpoint: list[str],
+    practice: str,
+    figure: str,
+    alt: str,
+) -> str:
     return (
         f"{summary}\n\n"
+        f"![{alt}](assets/figures/{figure}.png)\n\n"
         "## Learning Objectives\n\n"
         + "\n".join(f"- {item}" for item in objectives)
         + "\n\n## Checkpoint\n\n"
@@ -85,6 +93,8 @@ NOTEBOOKS = {
                         "Run the IK cell and explain the final error in task-space terms.",
                     ],
                     "Modify the IK target twice: one reachable point and one unreachable point. Record the final error and explain the difference in one paragraph.",
+                    "02_transforms_kinematics_ik",
+                    "Transforms, kinematics, and IK visual map",
                 )
             ),
             code(COMMON_SETUP),
@@ -136,6 +146,8 @@ NOTEBOOKS = {
                         "List one setup change that would make ICP more robust.",
                     ],
                     "Add noise or an outlier to the target points, rerun ICP, and write down how the error and estimated transform change.",
+                    "03_geometric_perception_icp",
+                    "ICP point cloud alignment visual map",
                 )
             ),
             code(COMMON_SETUP),
@@ -171,6 +183,8 @@ NOTEBOOKS = {
                         "Name one physical constraint missing from this simplified scorer.",
                     ],
                     "Create one new candidate grasp, predict its score qualitatively, then run the cell and compare your prediction with the output.",
+                    "04_grasp_scoring",
+                    "Grasp scoring visual map",
                 )
             ),
             code(COMMON_SETUP),
@@ -206,6 +220,8 @@ NOTEBOOKS = {
                         "Identify one obstacle change that makes the planning problem harder.",
                     ],
                     "Increase the obstacle radius in small steps and record the first setting where planning becomes unreliable.",
+                    "05_motion_planning_rrt",
+                    "RRT motion planning visual map",
                 )
             ),
             code(COMMON_SETUP),
@@ -238,6 +254,8 @@ NOTEBOOKS = {
                         "Name one reason a stable simulation may still be unsafe on hardware.",
                     ],
                     "Try three `kd` values while keeping `kp` fixed. Summarize which response you would trust most for a real manipulator and why.",
+                    "06_control_pd_impedance",
+                    "PD and impedance control visual map",
                 )
             ),
             code(COMMON_SETUP),
@@ -266,6 +284,8 @@ NOTEBOOKS = {
                         "Name one evaluation metric that checks manipulation impact, not just segmentation accuracy.",
                     ],
                     "Flip one mask value at a time and record which mistake damages the selected grasp most.",
+                    "07_segmentation_to_grasp",
+                    "Segmentation to grasp visual map",
                 )
             ),
             code(COMMON_SETUP),
@@ -302,6 +322,8 @@ NOTEBOOKS = {
                         "Describe how the shortest action sequence changes when the object moves.",
                     ],
                     "Move the object to a new grid cell and write a shortest successful action sequence before running it.",
+                    "08_rl_gridworld",
+                    "RL gridworld visual map",
                 )
             ),
             code(COMMON_SETUP),
