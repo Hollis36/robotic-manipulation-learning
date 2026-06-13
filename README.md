@@ -33,6 +33,7 @@ references/ How local source PDFs are used without republishing them.
 | --- | --- |
 | understand the whole course | `docs/deep_course_companion.md` |
 | learn through notebooks | `book/intro.md` |
+| operate the Jupyter Book workflow | `docs/book_workflow.md` |
 | choose a study route | `docs/learning_tracks.md` |
 | prepare for Drake | `docs/drake_setup.md` |
 | build portfolio projects | `docs/capstone_portfolio.md` |
@@ -103,9 +104,13 @@ python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
 Build the Jupyter Book:
 
 ```bash
-pip install -r requirements-book.txt
-cd book
-jupyter-book build --html
+make book-build
+```
+
+Run the full local verification loop:
+
+```bash
+make verify
 ```
 
 ## Learning Principles

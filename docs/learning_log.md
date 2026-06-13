@@ -169,6 +169,30 @@ Next quality target:
 
 - Make the repository public or upgrade the plan, then verify the public Pages URL after the first deployment.
 
+## 2026-06-13 Book Operations Pass
+
+Added local operation shortcuts for the Jupyter Book learning workflow.
+
+Artifacts produced:
+
+- `Makefile`
+- `docs/book_workflow.md`
+- `tests/test_book_operations.py`
+
+Quality checks:
+
+- `make test` runs pytest.
+- `make score` runs repository scoring.
+- `make casebook` runs all casebook scripts.
+- `make notebooks` regenerates book notebooks.
+- `make book-build` builds static HTML.
+- `make verify` runs the full local verification loop.
+- Repository score now tracks `book_workflow`.
+
+Next quality target:
+
+- Add optional learner progress checklists inside the Jupyter Book chapters.
+
 
 ## Reflection Template
 

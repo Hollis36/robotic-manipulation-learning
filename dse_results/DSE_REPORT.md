@@ -117,3 +117,17 @@ The next DSE target was publication. The repository now includes a GitHub Pages 
 This turns the learning repository into a publishable online course rather than only a local casebook.
 
 Current constraint: GitHub returned `Your current plan does not support GitHub Pages for this repository` while the repository is private. The workflow still validates the HTML build on `main`, and deployment will run after the repository becomes public.
+
+## Book Operations Pass
+
+The next DSE target was day-to-day usability. The repository now includes a `Makefile` and a Book workflow guide so the learning loop has short, memorable commands:
+
+- `make test`
+- `make score`
+- `make casebook`
+- `make notebooks`
+- `make book-build`
+- `make book-serve`
+- `make verify`
+
+The repository scorer now tracks `book_workflow`, and `docs/book_workflow.md` explains the local build, preview, verification, and private-repository Pages constraint.

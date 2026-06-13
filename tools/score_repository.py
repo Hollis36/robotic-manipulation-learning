@@ -72,6 +72,11 @@ def score_repository(root: Path) -> dict:
         root / "book" / "08_rl_gridworld.ipynb",
     ]
     book_passed = _count_existing(book_required)
+    book_workflow_required = [
+        root / "Makefile",
+        root / "docs" / "book_workflow.md",
+    ]
+    book_workflow_passed = _count_existing(book_workflow_required)
 
     categories = {
         "top_level_docs": _category(round(top_level_passed / len(top_level_required) * 100), top_level_passed, len(top_level_required)),
@@ -83,11 +88,12 @@ def score_repository(root: Path) -> dict:
         "visual_assets": _category(round(min(len(visual_assets), 9) / 9 * 100), len(visual_assets), 9),
         "process_visuals": _category(round(min(len(process_visuals), 2) / 2 * 100), len(process_visuals), 2),
         "jupyter_book": _category(round(book_passed / len(book_required) * 100), book_passed, len(book_required)),
+        "book_workflow": _category(round(book_workflow_passed / len(book_workflow_required) * 100), book_workflow_passed, len(book_workflow_required)),
     }
 
     weights = {
         "top_level_docs": 0.13,
-        "chapter_coverage": 0.18,
+        "chapter_coverage": 0.17,
         "casebook": 0.14,
         "tests": 0.15,
         "deep_learning_docs": 0.14,
@@ -95,6 +101,7 @@ def score_repository(root: Path) -> dict:
         "visual_assets": 0.07,
         "process_visuals": 0.05,
         "jupyter_book": 0.05,
+        "book_workflow": 0.01,
     }
     total_score = round(sum(categories[name]["score"] * weight for name, weight in weights.items()))
     recommendations = []

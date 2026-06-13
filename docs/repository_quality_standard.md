@@ -20,6 +20,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Drake labs are optional and skip cleanly if pydrake is unavailable.
 - Generated outputs are either ignored or intentionally small.
 - Code is deterministic by default.
+- Repeated learning operations are available through `Makefile` targets.
 
 ## GitHub Quality
 
@@ -60,7 +61,11 @@ python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
 Build the learning book:
 
 ```bash
-pip install -r requirements-book.txt
-cd book
-jupyter-book build --html
+make book-build
+```
+
+Run the full local verification loop:
+
+```bash
+make verify
 ```
