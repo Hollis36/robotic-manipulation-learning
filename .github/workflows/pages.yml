@@ -42,7 +42,7 @@ jobs:
           path: book/_build/html
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event.repository.private == false
     needs: build
     runs-on: ubuntu-latest
     environment:

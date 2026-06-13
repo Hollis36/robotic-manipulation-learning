@@ -163,10 +163,11 @@ Quality checks:
 - Pages workflow is covered by `tests/test_jupyter_book.py`.
 - Local static HTML build uses `jupyter-book build --html --strict`.
 - Repository score now includes the Pages workflow in `jupyter_book`.
+- Deploy is gated to public repositories; the current private repository plan does not support Pages.
 
 Next quality target:
 
-- Enable repository Pages source as GitHub Actions and verify the public Pages URL after the first `main` deployment.
+- Make the repository public or upgrade the plan, then verify the public Pages URL after the first deployment.
 
 
 ## Reflection Template

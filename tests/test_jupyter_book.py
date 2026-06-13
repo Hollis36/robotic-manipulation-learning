@@ -78,4 +78,5 @@ def test_pages_workflow_builds_and_deploys_jupyter_book():
     assert "book/_build/html" in workflow_path.read_text()
     assert "actions/upload-pages-artifact@" in uses
     assert "actions/deploy-pages@" in uses
+    assert "github.event.repository.private == false" in workflow["jobs"]["deploy"]["if"]
     assert workflow["jobs"]["deploy"]["environment"]["name"] == "github-pages"

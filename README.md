@@ -60,7 +60,7 @@ references/ How local source PDFs are used without republishing them.
 - 11 chapter folders are scaffolded for reading notes, exercises, concept work, and future Drake labs.
 - 9 runnable casebook examples are available.
 - 7 Jupyter notebooks are available in `book/` for interactive study.
-- GitHub Pages deployment is configured for the Jupyter Book.
+- GitHub Pages deployment is configured for the Jupyter Book; deployment runs automatically when the repository is public.
 - 9 generated casebook figures are available in `docs/casebook_visual_index.md`.
 - 2 generated process storyboards are available in `docs/process_visualizations.md`.
 - Core utilities are covered by pytest tests.

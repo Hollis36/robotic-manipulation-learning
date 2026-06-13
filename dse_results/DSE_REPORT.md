@@ -112,6 +112,8 @@ The next DSE target was publication. The repository now includes a GitHub Pages 
 - installs `requirements-book.txt`,
 - builds static HTML with `jupyter-book build --html --strict`,
 - uploads `book/_build/html` as a Pages artifact,
-- deploys the artifact to the `github-pages` environment from `main`.
+- deploys the artifact to the `github-pages` environment from `main` when the repository is public.
 
 This turns the learning repository into a publishable online course rather than only a local casebook.
+
+Current constraint: GitHub returned `Your current plan does not support GitHub Pages for this repository` while the repository is private. The workflow still validates the HTML build on `main`, and deployment will run after the repository becomes public.

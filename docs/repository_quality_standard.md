@@ -31,7 +31,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Casebook figures are generated from code, not hand-edited.
 - Process storyboards are generated from code and tracked as small, reviewable assets.
 - Jupyter Book sources are tracked, while generated `_build/` output is ignored.
-- GitHub Pages deployment builds static HTML from `book/` and uploads `book/_build/html`.
+- GitHub Pages deployment builds static HTML from `book/` and uploads `book/_build/html`; automatic deployment is gated to public repositories because the current private repository plan does not support Pages.
 
 ## Study Quality
 
