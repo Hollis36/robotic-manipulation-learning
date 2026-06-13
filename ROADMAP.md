@@ -46,7 +46,9 @@ Status: full-course overview completed via adapted `dse-loop`; chapter-by-chapte
 
 ## Phase 4: Public GitHub Polish
 
-- [ ] Review README and casebook entries for public clarity.
+- [x] Review README and casebook entries for public clarity.
+- [x] Add deep course companion, external resources, learning tracks, Drake setup, and capstone portfolio docs.
+- [x] Add repository quality scoring and GitHub Actions tests.
 - [ ] Add small output plots where they clarify the idea.
-- [ ] Create a GitHub repository.
-- [ ] Push this branch and merge a stable version into `main`.
+- [x] Create a GitHub repository.
+- [x] Push a stable version into `main`.

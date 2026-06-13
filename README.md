@@ -4,6 +4,14 @@
 
 The repository is organized as a personal learning casebook rather than a copy of the source notes. Each chapter has a study folder, and the `casebook/` directory contains runnable examples that turn core ideas into code.
 
+## What Makes This Repository Useful
+
+- **Stack-first learning:** every chapter is tied back to the manipulation stack.
+- **Runnable casebook:** concepts are paired with small deterministic Python examples.
+- **Deep companion docs:** course map, learning tracks, Drake setup, capstone portfolio, and external resources are separated from chapter notes.
+- **Quality loop:** `tools/score_repository.py` scores the repository against explicit quality standards.
+- **GitHub-ready engineering:** tests and CI keep the learning code executable.
+
 ## Repository Map
 
 ```text
@@ -14,6 +22,17 @@ tests/       Pytest coverage for math, perception, planning, control, and RL uti
 docs/        Learning log, glossary, math notes, and GitHub publishing notes.
 references/ How local source PDFs are used without republishing them.
 ```
+
+## Best Starting Points
+
+| If you want to... | Start here |
+| --- | --- |
+| understand the whole course | `docs/deep_course_companion.md` |
+| choose a study route | `docs/learning_tracks.md` |
+| prepare for Drake | `docs/drake_setup.md` |
+| build portfolio projects | `docs/capstone_portfolio.md` |
+| check authoritative references | `docs/external_resources.md` |
+| see the repository quality bar | `docs/repository_quality_standard.md` |
 
 ## First Casebook Track
 
@@ -50,6 +69,12 @@ For quick scripts without editable install:
 
 ```bash
 PYTHONPATH=src python casebook/001_spatial_transforms_numpy/run.py
+```
+
+Score repository quality:
+
+```bash
+python tools/score_repository.py
 ```
 
 ## Learning Principles

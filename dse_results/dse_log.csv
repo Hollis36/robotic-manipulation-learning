@@ -14,4 +14,10 @@ iteration,pdf,pages,section_count,artifact,coverage_score,constraint_met,notes
 12,12_Appendix_A_Drake.pdf,2,4,docs/full_course_learning_map.md,80,yes,"pydrake, notebooks, local setup, and help path mapped."
 13,13_Appendix_B_Manipulation_Station.pdf,2,4,docs/full_course_learning_map.md,75,yes,"Hardware station, message passing, iiwa/WSG/Realsense notes mapped."
 14,14_Appendix_C_Miscellaneous.pdf,2,4,docs/full_course_learning_map.md,70,yes,"Citation, annotation etiquette, final project pointer, and feedback note mapped."
-
+15,quality_external_resources,0,0,docs/external_resources.md,95,yes,"Official course, Drake, pydrake, and companion resources indexed."
+16,quality_deep_companion,0,0,docs/deep_course_companion.md,100,yes,"Chapter cards, assumptions, mistakes, checkpoints, and mastery rubric added."
+17,quality_learning_tracks,0,0,docs/learning_tracks.md,95,yes,"Concept, coding, Drake, portfolio, and research tracks added."
+18,quality_drake_readiness,0,0,docs/drake_setup.md,90,yes,"Drake transition path and optional lab policy added."
+19,quality_capstones,0,0,docs/capstone_portfolio.md,95,yes,"Portfolio-grade project ladder added."
+20,quality_standard,0,0,docs/repository_quality_standard.md,95,yes,"Quality rubric and scoring loop added."
+21,quality_ci_score,0,0,tools/score_repository.py,100,yes,"Repository scoring script and CI workflow added."

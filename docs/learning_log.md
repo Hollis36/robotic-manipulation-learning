@@ -63,6 +63,25 @@ Teaching sequence selected:
 9. Reinforcement learning.
 10. Drake and hardware appendices.
 
+## 2026-06-13 Repository Quality DSE Pass
+
+Expanded the repository from a course map into a stronger learning system.
+
+Added:
+
+- Deep course companion with chapter cards, assumptions, common mistakes, checkpoints, and mastery rubric.
+- External resource index for official course, OCW, Drake, pydrake, and related ecosystem links.
+- Learning tracks for fast concept study, coding-first practice, Drake transition, portfolio projects, and research reading.
+- Drake setup guide for moving from NumPy examples to optional pydrake labs.
+- Capstone portfolio ladder.
+- Repository quality standard.
+- Automated repository quality scorer.
+- GitHub Actions test workflow.
+
+Next quality target:
+
+- Add small generated plots or animations to the casebook where they improve understanding.
+
 
 ## Reflection Template
 

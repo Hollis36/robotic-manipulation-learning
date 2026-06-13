@@ -41,3 +41,27 @@ Success criteria met: every local PDF is represented in a learner-owned map, and
 - Do not start Drake labs until Chapter 2 and Appendix A environment assumptions are clear.
 - Keep Chapter 6 as future content because the local PDF is only a placeholder.
 
+## Repository Upgrade Pass
+
+After the first full-course map, the DSE loop was extended from "coverage" to "repository quality". The optimization target became a public-quality learning repository, measured across:
+
+- chapter coverage,
+- runnable casebook coverage,
+- testing,
+- deep course companion material,
+- external authoritative resources,
+- Drake transition readiness,
+- capstone project readiness,
+- CI and repository scoring.
+
+New artifacts:
+
+- `docs/deep_course_companion.md`
+- `docs/external_resources.md`
+- `docs/learning_tracks.md`
+- `docs/drake_setup.md`
+- `docs/capstone_portfolio.md`
+- `docs/repository_quality_standard.md`
+- `tools/score_repository.py`
+- `.github/workflows/tests.yml`
+
