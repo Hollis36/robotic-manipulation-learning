@@ -26,3 +26,4 @@ iteration,pdf,pages,section_count,artifact,coverage_score,constraint_met,notes
 24,quality_jupyter_book,0,0,book/intro.md,100,yes,"Added MyST-backed Jupyter Book with seven runnable notebooks; scorer now tracks jupyter_book."
 25,quality_jupyter_book_pages,0,0,.github/workflows/pages.yml,100,yes,"Added GitHub Pages workflow that builds book HTML and deploys book/_build/html from main."
 26,quality_book_operations,0,0,docs/book_workflow.md,100,yes,"Added Makefile shortcuts and Book workflow guide; scorer now tracks book_workflow."
+27,quality_book_learning_scaffold,0,0,book/intro.md,100,yes,"Added learning objectives, checkpoints, and practice tasks across all Jupyter Book pages; scorer now tracks book_learning_scaffold."

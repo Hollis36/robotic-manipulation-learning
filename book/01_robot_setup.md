@@ -15,6 +15,22 @@ robot model
   -> command interface
 ```
 
+## Learning Objectives
+
+- List the physical and software components of a manipulation station.
+- Explain what a robot model contributes: frames, joints, limits, geometry, and inertia.
+- Diagnose common algorithm failures that actually come from setup assumptions.
+
+## Checkpoint
+
+- You can identify the arm, gripper, sensors, scene objects, simulator, and command interface.
+- You can explain the difference between visual geometry and collision geometry.
+- You can name one setup mismatch that can make simulation results fail on hardware.
+
+## Practice Task
+
+Design a minimal pick-and-place station for a tabletop object. Write down the robot, gripper, camera, object model, controller interface, and the first calibration issue you would check.
+
 ## What The Model Defines
 
 - `links`: 连杆。

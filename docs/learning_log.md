@@ -193,6 +193,27 @@ Next quality target:
 
 - Add optional learner progress checklists inside the Jupyter Book chapters.
 
+## 2026-06-13 Book Learning Scaffold Pass
+
+Turned the Jupyter Book from a runnable notebook collection into a guided study path.
+
+Artifacts produced:
+
+- Learning objectives, checkpoints, and practice tasks in all 10 book pages.
+- Updated `tools/generate_jupyter_book_notebooks.py` so regenerated notebooks keep the learning scaffold.
+- `tests/test_book_learning_scaffold.py`
+- `book_learning_scaffold` category in `tools/score_repository.py`
+
+Quality checks:
+
+- Every book page now has `Learning Objectives`, `Checkpoint`, and `Practice Task`.
+- Generated notebooks preserve the same scaffold.
+- Repository score now tracks the guided-learning layer separately.
+
+Next quality target:
+
+- Add self-check answer keys or reflection templates for the practice tasks.
+
 
 ## Reflection Template
 

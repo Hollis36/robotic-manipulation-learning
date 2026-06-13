@@ -13,6 +13,22 @@ task goal
   -> feedback and recovery
 ```
 
+## Learning Objectives
+
+- Describe manipulation as a closed-loop stack rather than a single grasping algorithm.
+- Decompose a task into perception, geometry, grasping, planning, control, and recovery.
+- Identify which layer is most likely to fail for a concrete task.
+
+## Checkpoint
+
+- You can map a pick-and-place task onto every layer of the stack.
+- You can explain why a correct IK solution is not enough to guarantee task success.
+- You can name one feedback signal that helps the robot recover from failure.
+
+## Practice Task
+
+Pick one everyday manipulation task and write a six-step stack for it. For each step, mark whether you would solve it with geometry, control, learning, or a hybrid method.
+
 一个 pick-and-place 任务至少要回答：
 
 - 目标物体在哪里？

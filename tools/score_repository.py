@@ -14,6 +14,17 @@ def _category(score: int, passed: int, total: int) -> dict:
     return {"score": score, "passed": passed, "total": total}
 
 
+def _book_page_text(path: Path) -> str:
+    if path.suffix == ".ipynb":
+        notebook = json.loads(path.read_text())
+        return "\n\n".join(
+            cell["source"] if isinstance(cell["source"], str) else "".join(cell["source"])
+            for cell in notebook["cells"]
+            if cell["cell_type"] == "markdown"
+        )
+    return path.read_text()
+
+
 def score_repository(root: Path) -> dict:
     """Return a simple quality report for the repository."""
     root = Path(root)
@@ -77,6 +88,24 @@ def score_repository(root: Path) -> dict:
         root / "docs" / "book_workflow.md",
     ]
     book_workflow_passed = _count_existing(book_workflow_required)
+    book_pages = [
+        root / "book" / "intro.md",
+        root / "book" / "00_manipulation_stack.md",
+        root / "book" / "01_robot_setup.md",
+        root / "book" / "02_transforms_kinematics_ik.ipynb",
+        root / "book" / "03_geometric_perception_icp.ipynb",
+        root / "book" / "04_grasp_scoring.ipynb",
+        root / "book" / "05_motion_planning_rrt.ipynb",
+        root / "book" / "06_control_pd_impedance.ipynb",
+        root / "book" / "07_segmentation_to_grasp.ipynb",
+        root / "book" / "08_rl_gridworld.ipynb",
+    ]
+    scaffold_sections = ["## Learning Objectives", "## Checkpoint", "## Practice Task"]
+    book_scaffold_passed = sum(
+        1
+        for page in book_pages
+        if page.exists() and all(section in _book_page_text(page) for section in scaffold_sections)
+    )
 
     categories = {
         "top_level_docs": _category(round(top_level_passed / len(top_level_required) * 100), top_level_passed, len(top_level_required)),
@@ -89,11 +118,12 @@ def score_repository(root: Path) -> dict:
         "process_visuals": _category(round(min(len(process_visuals), 2) / 2 * 100), len(process_visuals), 2),
         "jupyter_book": _category(round(book_passed / len(book_required) * 100), book_passed, len(book_required)),
         "book_workflow": _category(round(book_workflow_passed / len(book_workflow_required) * 100), book_workflow_passed, len(book_workflow_required)),
+        "book_learning_scaffold": _category(round(book_scaffold_passed / len(book_pages) * 100), book_scaffold_passed, len(book_pages)),
     }
 
     weights = {
         "top_level_docs": 0.13,
-        "chapter_coverage": 0.17,
+        "chapter_coverage": 0.16,
         "casebook": 0.14,
         "tests": 0.15,
         "deep_learning_docs": 0.14,
@@ -102,6 +132,7 @@ def score_repository(root: Path) -> dict:
         "process_visuals": 0.05,
         "jupyter_book": 0.05,
         "book_workflow": 0.01,
+        "book_learning_scaffold": 0.01,
     }
     total_score = round(sum(categories[name]["score"] * weight for name, weight in weights.items()))
     recommendations = []

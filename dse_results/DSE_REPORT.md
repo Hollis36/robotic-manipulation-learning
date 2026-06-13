@@ -131,3 +131,13 @@ The next DSE target was day-to-day usability. The repository now includes a `Mak
 - `make verify`
 
 The repository scorer now tracks `book_workflow`, and `docs/book_workflow.md` explains the local build, preview, verification, and private-repository Pages constraint.
+
+## Book Learning Scaffold Pass
+
+The next DSE target was guided learning quality. A runnable book is useful, but a learner still needs to know what each page is asking them to master. Every Jupyter Book page now includes:
+
+- `Learning Objectives`
+- `Checkpoint`
+- `Practice Task`
+
+The generated notebooks preserve these sections through `tools/generate_jupyter_book_notebooks.py`, so future notebook regeneration will not remove the teaching layer. The repository scorer now tracks `book_learning_scaffold` as a separate category.

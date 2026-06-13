@@ -10,6 +10,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Every case has a generated visual asset when a picture clarifies the idea.
 - Core iterative algorithms have process visualizations when the intermediate states teach more than the final answer.
 - The main learning path is available as a Jupyter Book with runnable notebooks.
+- Every Jupyter Book page has learning objectives, a checkpoint, and a practice task.
 - Every advanced topic has a clear prerequisite.
 - Failure modes are documented, not hidden.
 

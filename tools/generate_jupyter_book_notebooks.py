@@ -36,6 +36,18 @@ def code(source: str) -> dict:
     }
 
 
+def learning_scaffold(summary: str, objectives: list[str], checkpoint: list[str], practice: str) -> str:
+    return (
+        f"{summary}\n\n"
+        "## Learning Objectives\n\n"
+        + "\n".join(f"- {item}" for item in objectives)
+        + "\n\n## Checkpoint\n\n"
+        + "\n".join(f"- {item}" for item in checkpoint)
+        + "\n\n## Practice Task\n\n"
+        + practice
+    )
+
+
 def notebook(cells: list[dict]) -> dict:
     return {
         "cells": cells,
@@ -60,7 +72,20 @@ NOTEBOOKS = {
         [
             markdown(
                 "# 02 Transforms, Kinematics, And IK\n\n"
-                "本章把已知物体位姿转成机器人关节运动。主线是：transforms -> forward kinematics -> Jacobian -> differential IK。"
+                + learning_scaffold(
+                    "本章把已知物体位姿转成机器人关节运动。主线是：transforms -> forward kinematics -> Jacobian -> differential IK。",
+                    [
+                        "Use frame names to compose 2D rigid transforms without losing direction.",
+                        "Connect forward kinematics to the planar manipulator Jacobian.",
+                        "Explain why differential IK is local, iterative, and target-limited by reachability.",
+                    ],
+                    [
+                        "Given `A_from_B` and `B_from_C`, write the composed transform in the correct order.",
+                        "Predict which Jacobian column changes most when a joint is near the base.",
+                        "Run the IK cell and explain the final error in task-space terms.",
+                    ],
+                    "Modify the IK target twice: one reachable point and one unreachable point. Record the final error and explain the difference in one paragraph.",
+                )
             ),
             code(COMMON_SETUP),
             markdown("## Spatial Transform Composition\n\n命名规则：`A_from_B @ B_from_C = A_from_C`。"),
@@ -96,7 +121,23 @@ NOTEBOOKS = {
     ),
     "03_geometric_perception_icp.ipynb": notebook(
         [
-            markdown("# 03 Geometric Perception And ICP\n\n物体位姿不再给定时，机器人要从点云中估计刚体变换。"),
+            markdown(
+                "# 03 Geometric Perception And ICP\n\n"
+                + learning_scaffold(
+                    "物体位姿不再给定时，机器人要从点云中估计刚体变换。",
+                    [
+                        "Describe ICP as alternating correspondence search and rigid transform fitting.",
+                        "Identify when geometric registration is a good fit for manipulation.",
+                        "Name the common failure modes caused by symmetry, occlusion, and poor initialization.",
+                    ],
+                    [
+                        "Run the ICP example and identify the estimated rotation and translation.",
+                        "Explain why low mean error does not always mean the correct object pose.",
+                        "List one setup change that would make ICP more robust.",
+                    ],
+                    "Add noise or an outlier to the target points, rerun ICP, and write down how the error and estimated transform change.",
+                )
+            ),
             code(COMMON_SETUP),
             code(
                 "import numpy as np\n"
@@ -115,7 +156,23 @@ NOTEBOOKS = {
     ),
     "04_grasp_scoring.ipynb": notebook(
         [
-            markdown("# 04 Grasp Scoring\n\nBin picking 中常常不需要完整识别物体，也可以根据点云选择合理抓取。"),
+            markdown(
+                "# 04 Grasp Scoring\n\n"
+                + learning_scaffold(
+                    "Bin picking 中常常不需要完整识别物体，也可以根据点云选择合理抓取。",
+                    [
+                        "Explain the difference between recognizing an object and selecting a feasible grasp.",
+                        "Read a simple antipodal grasp score from contact balance and gripper width.",
+                        "Connect grasp scoring errors to point cloud coverage and candidate generation.",
+                    ],
+                    [
+                        "Run the scoring cell and identify why the balanced candidate wins.",
+                        "Explain what happens when a candidate is too narrow.",
+                        "Name one physical constraint missing from this simplified scorer.",
+                    ],
+                    "Create one new candidate grasp, predict its score qualitatively, then run the cell and compare your prediction with the output.",
+                )
+            ),
             code(COMMON_SETUP),
             code(
                 "import numpy as np\n"
@@ -134,7 +191,23 @@ NOTEBOOKS = {
     ),
     "05_motion_planning_rrt.ipynb": notebook(
         [
-            markdown("# 05 Motion Planning With RRT\n\nIK 只回答目标是否可达，planning 回答路径是否可行。"),
+            markdown(
+                "# 05 Motion Planning With RRT\n\n"
+                + learning_scaffold(
+                    "IK 只回答目标是否可达，planning 回答路径是否可行。",
+                    [
+                        "Separate goal feasibility from path feasibility.",
+                        "Describe how RRT grows a collision-free tree through sampling.",
+                        "Relate planner parameters such as step size and max iterations to success rate.",
+                    ],
+                    [
+                        "Run the RRT example and verify that the returned path is collision-free.",
+                        "Explain why the first and last path points matter.",
+                        "Identify one obstacle change that makes the planning problem harder.",
+                    ],
+                    "Increase the obstacle radius in small steps and record the first setting where planning becomes unreliable.",
+                )
+            ),
             code(COMMON_SETUP),
             code(
                 "import numpy as np\n"
@@ -150,7 +223,23 @@ NOTEBOOKS = {
     ),
     "06_control_pd_impedance.ipynb": notebook(
         [
-            markdown("# 06 Control: PD And Impedance Intuition\n\nPlanning 给期望轨迹，control 处理真实动态响应。"),
+            markdown(
+                "# 06 Control: PD And Impedance Intuition\n\n"
+                + learning_scaffold(
+                    "Planning 给期望轨迹，control 处理真实动态响应。",
+                    [
+                        "Interpret proportional gain as position-error correction.",
+                        "Interpret derivative gain as damping.",
+                        "Connect control tuning to overshoot, settling, and force limits.",
+                    ],
+                    [
+                        "Run the PD simulation and read the final position, velocity, and max control.",
+                        "Explain what changes when damping is reduced.",
+                        "Name one reason a stable simulation may still be unsafe on hardware.",
+                    ],
+                    "Try three `kd` values while keeping `kp` fixed. Summarize which response you would trust most for a real manipulator and why.",
+                )
+            ),
             code(COMMON_SETUP),
             code(
                 "from rml.control import simulate_pd_mass\n\n"
@@ -162,7 +251,23 @@ NOTEBOOKS = {
     ),
     "07_segmentation_to_grasp.ipynb": notebook(
         [
-            markdown("# 07 Segmentation To Grasp\n\n深度感知常常不是直接输出动作，而是先选择哪些点属于目标物体。"),
+            markdown(
+                "# 07 Segmentation To Grasp\n\n"
+                + learning_scaffold(
+                    "深度感知常常不是直接输出动作，而是先选择哪些点属于目标物体。",
+                    [
+                        "Trace how a segmentation mask changes the point cloud passed to grasp scoring.",
+                        "Explain false positives and false negatives as downstream manipulation errors.",
+                        "Distinguish perception quality from end-to-end task success.",
+                    ],
+                    [
+                        "Run the mask example and identify how many points are treated as target points.",
+                        "Explain why a background point can corrupt a grasp score.",
+                        "Name one evaluation metric that checks manipulation impact, not just segmentation accuracy.",
+                    ],
+                    "Flip one mask value at a time and record which mistake damages the selected grasp most.",
+                )
+            ),
             code(COMMON_SETUP),
             code(
                 "import numpy as np\n"
@@ -182,7 +287,23 @@ NOTEBOOKS = {
     ),
     "08_rl_gridworld.ipynb": notebook(
         [
-            markdown("# 08 RL Grasping Gridworld\n\nRL 用 state、action、reward、transition 和 policy 表达交互学习。"),
+            markdown(
+                "# 08 RL Grasping Gridworld\n\n"
+                + learning_scaffold(
+                    "RL 用 state、action、reward、transition 和 policy 表达交互学习。",
+                    [
+                        "Map a manipulation problem into state, action, reward, transition, and policy.",
+                        "Explain why reward design changes what the agent learns.",
+                        "Use a tiny gridworld to reason about exploration before moving to robot simulators.",
+                    ],
+                    [
+                        "Run the trajectory cell and identify the state after each action.",
+                        "Explain what event produces the positive reward.",
+                        "Describe how the shortest action sequence changes when the object moves.",
+                    ],
+                    "Move the object to a new grid cell and write a shortest successful action sequence before running it.",
+                )
+            ),
             code(COMMON_SETUP),
             code(
                 "from rml.gridworld import GridGraspWorld\n\n"

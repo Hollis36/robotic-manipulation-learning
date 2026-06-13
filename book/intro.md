@@ -2,6 +2,22 @@
 
 这本 Jupyter Book 是本仓库的交互式学习入口。它把课程主线、章节笔记、可运行案例和生成图统一成一本可执行教材。
 
+## Learning Objectives
+
+- Build a system-level view of robotic manipulation before diving into algorithms.
+- Use the book, casebook, and source package as one learning loop.
+- Turn every chapter into a small piece of your own GitHub learning portfolio.
+
+## Checkpoint
+
+- You can explain why manipulation requires perception, geometry, planning, control, and feedback together.
+- You can run a book notebook and identify which `src/rml` module it uses.
+- You can point to one casebook example that demonstrates each major topic.
+
+## Practice Task
+
+Create a short learning note for the first topic you want to master. Include the chapter name, the runnable case, what you changed in the code, and one question you still have.
+
 学习顺序：
 
 1. 先建立 manipulation stack 的总图。
@@ -23,8 +39,7 @@ pip install -e .
 构建本书：
 
 ```bash
-cd book
-jupyter-book build --html
+make book-build
 ```
 
 也可以直接在 JupyterLab 或 VS Code 中打开 `book/*.ipynb`，逐个运行代码单元。
