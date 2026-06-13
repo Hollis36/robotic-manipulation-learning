@@ -18,12 +18,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from rml.control import simulate_pd_mass
-from rml.differential_ik import solve_planar_position_ik
+from rml.differential_ik import damped_least_squares_step, solve_planar_position_ik
 from rml.grasp_scoring import score_antipodal_grasps
 from rml.gridworld import GridGraspWorld
 from rml.icp import icp
-from rml.kinematics import planar_forward_kinematics
-from rml.rrt import path_is_collision_free, rrt
+from rml.kinematics import planar_forward_kinematics, planar_jacobian
+from rml.rrt import path_is_collision_free, rrt, segment_is_collision_free
 from rml.transforms import apply_transform, compose, make_transform
 
 OKABE_ITO = {
@@ -206,6 +206,179 @@ def figure_006(output_dir: Path) -> Path:
     return _save(fig, output_dir, "006_rrt_motion_planning")
 
 
+def _ik_trace(
+    initial_q,
+    target,
+    links,
+    steps: int = 80,
+    damping: float = 0.05,
+    gain: float = 0.6,
+) -> list[tuple[int, np.ndarray, float]]:
+    q = np.asarray(initial_q, dtype=float).copy()
+    target = np.asarray(target, dtype=float)
+    links = np.asarray(links, dtype=float)
+    trace = [(0, q.copy(), float(np.linalg.norm(target - planar_forward_kinematics(q, links))))]
+
+    for iteration in range(1, steps + 1):
+        current = planar_forward_kinematics(q, links)
+        error = target - current
+        jacobian = planar_jacobian(q, links)
+        q += gain * damped_least_squares_step(jacobian, error, damping=damping)
+        final_error = target - planar_forward_kinematics(q, links)
+        trace.append((iteration, q.copy(), float(np.linalg.norm(final_error))))
+
+    return trace
+
+
+def figure_003_storyboard(output_dir: Path) -> Path:
+    links = np.array([1.0, 0.8, 0.4])
+    target = np.array([1.3, 0.7])
+    initial_q = np.array([0.1, 0.1, -0.2])
+    trace = _ik_trace(initial_q, target, links)
+    snapshots = [trace[index] for index in [0, 4, 16, 80]]
+
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.8), sharex=True, sharey=True)
+    for ax, (iteration, q, error_norm) in zip(axes.flat, snapshots):
+        _configure_axes(ax, f"Iteration {iteration}")
+        points = _arm_points(q, links)
+        ee = points[-1]
+        ax.plot(
+            points[:, 0],
+            points[:, 1],
+            "-o",
+            color=OKABE_ITO["blue"],
+            linewidth=2.0,
+            markersize=4,
+        )
+        ax.plot([ee[0], target[0]], [ee[1], target[1]], ":", color=OKABE_ITO["black"], linewidth=1.0)
+        ax.scatter([target[0]], [target[1]], marker="*", color=OKABE_ITO["vermillion"], s=95)
+        ax.text(0.02, 0.92, f"error = {error_norm:.3f}", transform=ax.transAxes, fontsize=8)
+        ax.set_aspect("equal", adjustable="box")
+        ax.set_xlim(-0.5, 2.4)
+        ax.set_ylim(-0.7, 1.5)
+
+    fig.suptitle("Differential IK convergence storyboard", fontsize=12)
+    return _save(fig, output_dir, "003_differential_ik_storyboard")
+
+
+def _within_bounds(point: np.ndarray, bounds) -> bool:
+    return bounds[0][0] <= point[0] <= bounds[0][1] and bounds[1][0] <= point[1] <= bounds[1][1]
+
+
+def _copy_rrt_tree(nodes: list[np.ndarray], parents: list[int]) -> tuple[list[np.ndarray], list[int]]:
+    return [node.copy() for node in nodes], parents.copy()
+
+
+def _reconstruct_rrt_path(nodes: list[np.ndarray], parents: list[int], goal_index: int) -> list[np.ndarray]:
+    path = []
+    index = goal_index
+    while index != -1:
+        path.append(nodes[index])
+        index = parents[index]
+    return list(reversed(path))
+
+
+def _trace_rrt(
+    start,
+    goal,
+    bounds,
+    obstacles,
+    step_size: float = 0.15,
+    max_iter: int = 500,
+    seed: int = 4,
+):
+    start = np.asarray(start, dtype=float)
+    goal = np.asarray(goal, dtype=float)
+    rng = np.random.default_rng(seed)
+    nodes = [start]
+    parents = [-1]
+    thresholds = [4, 7, 9]
+    snapshots = []
+
+    for iteration in range(max_iter):
+        if iteration % 10 == 0:
+            sample = goal
+        else:
+            sample = np.array(
+                [
+                    rng.uniform(bounds[0][0], bounds[0][1]),
+                    rng.uniform(bounds[1][0], bounds[1][1]),
+                ]
+            )
+
+        distances = np.array([np.linalg.norm(sample - node) for node in nodes])
+        nearest_index = int(np.argmin(distances))
+        nearest = nodes[nearest_index]
+        direction = sample - nearest
+        length = float(np.linalg.norm(direction))
+        if length == 0:
+            continue
+
+        new_node = nearest + direction / length * min(step_size, length)
+        if not _within_bounds(new_node, bounds):
+            continue
+        if not segment_is_collision_free(nearest, new_node, obstacles):
+            continue
+
+        nodes.append(new_node)
+        parents.append(nearest_index)
+        while thresholds and len(nodes) >= thresholds[0]:
+            snapshots.append((f"{thresholds.pop(0)} nodes", *_copy_rrt_tree(nodes, parents), None))
+
+        if np.linalg.norm(goal - new_node) <= step_size and segment_is_collision_free(new_node, goal, obstacles):
+            nodes.append(goal)
+            parents.append(len(nodes) - 2)
+            path = _reconstruct_rrt_path(nodes, parents, len(nodes) - 1)
+            snapshots.append(("solution", *_copy_rrt_tree(nodes, parents), path))
+            return snapshots, path
+
+    raise RuntimeError("RRT failed to find a path")
+
+
+def _draw_rrt_tree(
+    ax,
+    nodes: list[np.ndarray],
+    parents: list[int],
+    obstacles,
+    start: np.ndarray,
+    goal: np.ndarray,
+    path=None,
+) -> None:
+    for ox, oy, radius in obstacles:
+        ax.add_patch(plt.Circle((ox, oy), radius, color=OKABE_ITO["vermillion"], alpha=0.25))
+    for index, parent in enumerate(parents):
+        if parent == -1:
+            continue
+        a = nodes[parent]
+        b = nodes[index]
+        ax.plot([a[0], b[0]], [a[1], b[1]], color=OKABE_ITO["sky"], linewidth=0.8, alpha=0.8)
+    if path is not None:
+        path = np.asarray(path)
+        ax.plot(path[:, 0], path[:, 1], "-o", color=OKABE_ITO["blue"], linewidth=2.2, markersize=3)
+    ax.scatter([start[0]], [start[1]], color=OKABE_ITO["green"], s=45)
+    ax.scatter([goal[0]], [goal[1]], marker="*", color=OKABE_ITO["orange"], s=85)
+    ax.set_aspect("equal", adjustable="box")
+    ax.set_xlim(-0.05, 1.25)
+    ax.set_ylim(-0.05, 1.25)
+
+
+def figure_006_storyboard(output_dir: Path) -> Path:
+    start = np.array([0.0, 0.0])
+    goal = np.array([1.0, 1.0])
+    bounds = ((0.0, 1.2), (0.0, 1.2))
+    obstacles = [(0.5, 0.5, 0.2)]
+    snapshots, path = _trace_rrt(start, goal, bounds, obstacles)
+    assert path_is_collision_free(path, obstacles)
+
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.8), sharex=True, sharey=True)
+    for ax, (label, nodes, parents, snapshot_path) in zip(axes.flat, snapshots):
+        _configure_axes(ax, label)
+        _draw_rrt_tree(ax, nodes, parents, obstacles, start, goal, snapshot_path)
+
+    fig.suptitle("RRT tree-growth storyboard", fontsize=12)
+    return _save(fig, output_dir, "006_rrt_motion_planning_storyboard")
+
+
 def figure_007(output_dir: Path) -> Path:
     trace = simulate_pd_mass(x0=0.0, v0=0.0, target=1.0, kp=25.0, kd=10.0, dt=0.01, steps=500)
 
@@ -275,6 +448,11 @@ FIGURE_BUILDERS = [
     figure_009,
 ]
 
+STORYBOARD_BUILDERS = [
+    figure_003_storyboard,
+    figure_006_storyboard,
+]
+
 
 def generate_all_figures(output_dir: Path | str = Path("docs/assets/casebook")) -> list[Path]:
     """Generate all casebook figure assets and return their paths."""
@@ -282,9 +460,24 @@ def generate_all_figures(output_dir: Path | str = Path("docs/assets/casebook")) 
     return [builder(output_dir) for builder in FIGURE_BUILDERS]
 
 
+def generate_storyboard_figures(output_dir: Path | str = Path("docs/assets/storyboards")) -> list[Path]:
+    """Generate process storyboard assets and return their paths."""
+    output_dir = Path(output_dir)
+    return [builder(output_dir) for builder in STORYBOARD_BUILDERS]
+
+
 def main() -> None:
-    output_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("docs/assets/casebook")
-    generated = generate_all_figures(output_dir)
+    args = sys.argv[1:]
+    if args and args[0] == "--storyboards":
+        output_dir = Path(args[1]) if len(args) > 1 else Path("docs/assets/storyboards")
+        generated = generate_storyboard_figures(output_dir)
+    elif args and args[0] == "--all":
+        casebook_dir = Path(args[1]) if len(args) > 1 else Path("docs/assets/casebook")
+        storyboard_dir = Path(args[2]) if len(args) > 2 else Path("docs/assets/storyboards")
+        generated = generate_all_figures(casebook_dir) + generate_storyboard_figures(storyboard_dir)
+    else:
+        output_dir = Path(args[0]) if args else Path("docs/assets/casebook")
+        generated = generate_all_figures(output_dir)
     for path in generated:
         print(path)
 

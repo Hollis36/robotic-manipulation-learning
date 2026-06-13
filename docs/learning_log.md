@@ -99,6 +99,26 @@ Quality checks:
 - CLI works without manually setting `PYTHONPATH`.
 - Repository score now tracks `visual_assets`.
 
+## 2026-06-13 Process Visualization Pass
+
+Added process storyboards for the two examples where the intermediate states matter most.
+
+Artifacts produced:
+
+- `docs/process_visualizations.md`
+- `docs/assets/storyboards/003_differential_ik_storyboard.png`
+- `docs/assets/storyboards/006_rrt_motion_planning_storyboard.png`
+
+Quality checks:
+
+- Storyboards are generated from the same tool as the static casebook figures.
+- The CLI supports `--storyboards` and `--all`.
+- Repository score now tracks `process_visuals`.
+
+Next quality target:
+
+- Add optional animation or trace tables for examples where a static image hides important state transitions.
+
 
 ## Reflection Template
 

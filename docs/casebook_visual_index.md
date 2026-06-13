@@ -8,6 +8,8 @@ python tools/generate_casebook_figures.py docs/assets/casebook
 
 They are intentionally small, deterministic, and tied to the runnable casebook scripts.
 
+For algorithm traces that show convergence or search over time, see `docs/process_visualizations.md`.
+
 ## 001 Spatial Transforms
 
 ![Spatial transforms](assets/casebook/001_spatial_transforms_numpy.png)
@@ -61,4 +63,3 @@ Shows how a segmentation mask selects downstream grasp points.
 ![RL gridworld](assets/casebook/009_rl_grasping_gridworld.png)
 
 Shows the start, object location, and policy trace for a tiny grasping environment.
-

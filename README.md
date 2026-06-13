@@ -8,6 +8,7 @@ The repository is organized as a personal learning casebook rather than a copy o
 
 - **Stack-first learning:** every chapter is tied back to the manipulation stack.
 - **Runnable casebook:** concepts are paired with small deterministic Python examples.
+- **Process visualizations:** selected algorithms include storyboards that show convergence or search over time.
 - **Deep companion docs:** course map, learning tracks, Drake setup, capstone portfolio, and external resources are separated from chapter notes.
 - **Quality loop:** `tools/score_repository.py` scores the repository against explicit quality standards.
 - **GitHub-ready engineering:** tests and CI keep the learning code executable.
@@ -34,6 +35,7 @@ references/ How local source PDFs are used without republishing them.
 | check authoritative references | `docs/external_resources.md` |
 | see the repository quality bar | `docs/repository_quality_standard.md` |
 | browse casebook figures | `docs/casebook_visual_index.md` |
+| inspect algorithm process storyboards | `docs/process_visualizations.md` |
 
 ## First Casebook Track
 
@@ -54,6 +56,7 @@ references/ How local source PDFs are used without republishing them.
 - 11 chapter folders are scaffolded for reading notes, exercises, concept work, and future Drake labs.
 - 9 runnable casebook examples are available.
 - 9 generated casebook figures are available in `docs/casebook_visual_index.md`.
+- 2 generated process storyboards are available in `docs/process_visualizations.md`.
 - Core utilities are covered by pytest tests.
 - Drake labs are intentionally documented as future work until pydrake is configured.
 
@@ -83,6 +86,12 @@ Generate casebook figures:
 
 ```bash
 python tools/generate_casebook_figures.py docs/assets/casebook
+```
+
+Generate process storyboards:
+
+```bash
+python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
 ```
 
 ## Learning Principles

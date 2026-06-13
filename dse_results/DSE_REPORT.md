@@ -74,3 +74,18 @@ python tools/generate_casebook_figures.py docs/assets/casebook
 ```
 
 This improves the repository's usefulness as a GitHub learning artifact: readers can inspect the main idea of each case before running it.
+
+## Process Storyboard Pass
+
+The next DSE target was algorithm process clarity. Static figures show final outputs, but iterative methods are easier to learn when their intermediate states are visible. The repository now includes generated storyboards for:
+
+- differential IK convergence,
+- RRT tree growth and final path connection.
+
+The storyboards are generated from code using:
+
+```bash
+python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
+```
+
+The repository scorer now tracks `process_visuals` as a separate category, so future quality passes can distinguish static visual coverage from process-level teaching assets.
