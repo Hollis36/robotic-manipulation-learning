@@ -4,9 +4,9 @@
 
 - [x] Create the repository plan.
 - [x] Scaffold repository metadata.
-- [ ] Add chapter folders and learner-owned note templates.
-- [ ] Implement deterministic Python examples for transforms, kinematics, differential IK, ICP, grasp scoring, RRT, PD control, perception flow, and gridworld RL.
-- [ ] Verify all examples with pytest and run scripts.
+- [x] Add chapter folders and learner-owned note templates.
+- [x] Implement deterministic Python examples for transforms, kinematics, differential IK, ICP, grasp scoring, RRT, PD control, perception flow, and gridworld RL.
+- [x] Verify all examples with pytest and run scripts.
 
 ## Phase 2: Chapter Study Loop
 
@@ -32,4 +32,3 @@ For each chapter:
 - [ ] Add small output plots where they clarify the idea.
 - [ ] Create a GitHub repository.
 - [ ] Push this branch and merge a stable version into `main`.
-

@@ -11,6 +11,13 @@ Initial learning goals:
 - Keep examples executable before depending on Drake.
 - Gradually add Drake labs after the basic concepts are stable.
 
+Repository v0.1 content:
+
+- Chapter study folders for Chapters 1-11.
+- Tested Python utilities under `src/rml`.
+- Nine runnable casebook examples covering transforms, kinematics, IK, ICP, grasp scoring, RRT, PD control, perception data flow, and RL environment structure.
+- Local source PDFs excluded from Git by default.
+
 ## Reflection Template
 
 - Chapter:
@@ -19,4 +26,3 @@ Initial learning goals:
 - Where I got stuck:
 - What I should revisit:
 - Related casebook item:
-

@@ -29,6 +29,13 @@ references/ How local source PDFs are used without republishing them.
 | `008_segmentation_pipeline_stub` | Segmentation-to-manipulation data flow | Chapters 9-10 |
 | `009_rl_grasping_gridworld` | Small RL grasping gridworld | Chapter 11 |
 
+## Current Version
+
+- 11 chapter folders are scaffolded for reading notes, exercises, concept work, and future Drake labs.
+- 9 runnable casebook examples are available.
+- Core utilities are covered by pytest tests.
+- Drake labs are intentionally documented as future work until pydrake is configured.
+
 ## Setup
 
 ```bash
@@ -56,4 +63,3 @@ PYTHONPATH=src python casebook/001_spatial_transforms_numpy/run.py
 ## Source Notes
 
 The local PDFs are used as study references only. They are ignored by Git by default. See `CITATION.md` and `references/README.md` for citation and source-handling notes.
-
