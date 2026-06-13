@@ -31,6 +31,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Casebook figures are generated from code, not hand-edited.
 - Process storyboards are generated from code and tracked as small, reviewable assets.
 - Jupyter Book sources are tracked, while generated `_build/` output is ignored.
+- GitHub Pages deployment builds static HTML from `book/` and uploads `book/_build/html`.
 
 ## Study Quality
 
@@ -61,5 +62,5 @@ Build the learning book:
 ```bash
 pip install -r requirements-book.txt
 cd book
-jupyter-book build --site
+jupyter-book build --html
 ```

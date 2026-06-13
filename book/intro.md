@@ -24,7 +24,7 @@ pip install -e .
 
 ```bash
 cd book
-jupyter-book build --site
+jupyter-book build --html
 ```
 
 也可以直接在 JupyterLab 或 VS Code 中打开 `book/*.ipynb`，逐个运行代码单元。

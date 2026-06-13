@@ -150,6 +150,24 @@ Next quality target:
 
 - Add GitHub Pages publishing once the book build is stable in CI.
 
+## 2026-06-13 Jupyter Book Pages Pass
+
+Added GitHub Pages publishing for the interactive book.
+
+Artifacts produced:
+
+- `.github/workflows/pages.yml`
+
+Quality checks:
+
+- Pages workflow is covered by `tests/test_jupyter_book.py`.
+- Local static HTML build uses `jupyter-book build --html --strict`.
+- Repository score now includes the Pages workflow in `jupyter_book`.
+
+Next quality target:
+
+- Enable repository Pages source as GitHub Actions and verify the public Pages URL after the first `main` deployment.
+
 
 ## Reflection Template
 

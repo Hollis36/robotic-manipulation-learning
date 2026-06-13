@@ -24,3 +24,4 @@ iteration,pdf,pages,section_count,artifact,coverage_score,constraint_met,notes
 22,quality_casebook_visuals,0,0,docs/casebook_visual_index.md,100,yes,"Generated one visual asset per casebook example and added CLI-tested figure generator."
 23,quality_process_storyboards,0,0,docs/process_visualizations.md,100,yes,"Generated differential IK and RRT process storyboards; scorer now tracks process_visuals."
 24,quality_jupyter_book,0,0,book/intro.md,100,yes,"Added MyST-backed Jupyter Book with seven runnable notebooks; scorer now tracks jupyter_book."
+25,quality_jupyter_book_pages,0,0,.github/workflows/pages.yml,100,yes,"Added GitHub Pages workflow that builds book HTML and deploys book/_build/html from main."

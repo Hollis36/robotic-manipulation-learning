@@ -9,6 +9,7 @@ The repository is organized as a personal learning casebook rather than a copy o
 - **Stack-first learning:** every chapter is tied back to the manipulation stack.
 - **Runnable casebook:** concepts are paired with small deterministic Python examples.
 - **Jupyter Book path:** the casebook is also organized as an interactive learning book under `book/`.
+- **Pages publishing:** `.github/workflows/pages.yml` builds the book HTML for GitHub Pages.
 - **Process visualizations:** selected algorithms include storyboards that show convergence or search over time.
 - **Deep companion docs:** course map, learning tracks, Drake setup, capstone portfolio, and external resources are separated from chapter notes.
 - **Quality loop:** `tools/score_repository.py` scores the repository against explicit quality standards.
@@ -59,6 +60,7 @@ references/ How local source PDFs are used without republishing them.
 - 11 chapter folders are scaffolded for reading notes, exercises, concept work, and future Drake labs.
 - 9 runnable casebook examples are available.
 - 7 Jupyter notebooks are available in `book/` for interactive study.
+- GitHub Pages deployment is configured for the Jupyter Book.
 - 9 generated casebook figures are available in `docs/casebook_visual_index.md`.
 - 2 generated process storyboards are available in `docs/process_visualizations.md`.
 - Core utilities are covered by pytest tests.
@@ -103,7 +105,7 @@ Build the Jupyter Book:
 ```bash
 pip install -r requirements-book.txt
 cd book
-jupyter-book build --site
+jupyter-book build --html
 ```
 
 ## Learning Principles

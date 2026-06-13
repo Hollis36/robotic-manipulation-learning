@@ -55,6 +55,7 @@ def score_repository(root: Path) -> dict:
     visual_assets = list((root / "docs" / "assets" / "casebook").glob("*.png")) if (root / "docs" / "assets" / "casebook").exists() else []
     process_visuals = list((root / "docs" / "assets" / "storyboards").glob("*.png")) if (root / "docs" / "assets" / "storyboards").exists() else []
     book_required = [
+        root / ".github" / "workflows" / "pages.yml",
         root / "requirements-book.txt",
         root / "book" / "_config.yml",
         root / "book" / "_toc.yml",

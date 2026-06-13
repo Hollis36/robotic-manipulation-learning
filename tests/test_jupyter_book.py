@@ -57,4 +57,25 @@ def test_score_repository_tracks_jupyter_book_assets():
     report = score_repository(Path("."))
 
     assert "jupyter_book" in report["categories"]
-    assert report["categories"]["jupyter_book"]["total"] == 14
+    assert report["categories"]["jupyter_book"]["total"] == 15
+
+
+def test_pages_workflow_builds_and_deploys_jupyter_book():
+    workflow_path = Path(".github/workflows/pages.yml")
+
+    assert workflow_path.exists()
+    workflow = yaml.safe_load(workflow_path.read_text())
+    assert workflow["permissions"]["contents"] == "read"
+    assert workflow["permissions"]["pages"] == "write"
+    assert workflow["permissions"]["id-token"] == "write"
+
+    build_steps = workflow["jobs"]["build"]["steps"]
+    deploy_steps = workflow["jobs"]["deploy"]["steps"]
+    build_commands = "\n".join(str(step.get("run", "")) for step in build_steps)
+    uses = "\n".join(str(step.get("uses", "")) for step in build_steps + deploy_steps)
+
+    assert "jupyter-book build --html" in build_commands
+    assert "book/_build/html" in workflow_path.read_text()
+    assert "actions/upload-pages-artifact@" in uses
+    assert "actions/deploy-pages@" in uses
+    assert workflow["jobs"]["deploy"]["environment"]["name"] == "github-pages"

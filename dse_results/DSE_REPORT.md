@@ -102,5 +102,16 @@ The notebooks reuse `src/rml` package code rather than duplicating casebook logi
 
 ```bash
 cd book
-jupyter-book build --site
+jupyter-book build --html
 ```
+
+## Jupyter Book Pages Pass
+
+The next DSE target was publication. The repository now includes a GitHub Pages workflow that:
+
+- installs `requirements-book.txt`,
+- builds static HTML with `jupyter-book build --html --strict`,
+- uploads `book/_build/html` as a Pages artifact,
+- deploys the artifact to the `github-pages` environment from `main`.
+
+This turns the learning repository into a publishable online course rather than only a local casebook.
