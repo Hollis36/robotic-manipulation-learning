@@ -8,6 +8,7 @@ The repository is organized as a personal learning casebook rather than a copy o
 
 - **Stack-first learning:** every chapter is tied back to the manipulation stack.
 - **Runnable casebook:** concepts are paired with small deterministic Python examples.
+- **Jupyter Book path:** the casebook is also organized as an interactive learning book under `book/`.
 - **Process visualizations:** selected algorithms include storyboards that show convergence or search over time.
 - **Deep companion docs:** course map, learning tracks, Drake setup, capstone portfolio, and external resources are separated from chapter notes.
 - **Quality loop:** `tools/score_repository.py` scores the repository against explicit quality standards.
@@ -21,6 +22,7 @@ casebook/    Runnable learning cases with small deterministic examples.
 src/rml/     Shared Python utilities used by the casebook and tests.
 tests/       Pytest coverage for math, perception, planning, control, and RL utilities.
 docs/        Learning log, glossary, math notes, and GitHub publishing notes.
+book/        Jupyter Book source for the interactive learning textbook.
 references/ How local source PDFs are used without republishing them.
 ```
 
@@ -29,6 +31,7 @@ references/ How local source PDFs are used without republishing them.
 | If you want to... | Start here |
 | --- | --- |
 | understand the whole course | `docs/deep_course_companion.md` |
+| learn through notebooks | `book/intro.md` |
 | choose a study route | `docs/learning_tracks.md` |
 | prepare for Drake | `docs/drake_setup.md` |
 | build portfolio projects | `docs/capstone_portfolio.md` |
@@ -55,6 +58,7 @@ references/ How local source PDFs are used without republishing them.
 
 - 11 chapter folders are scaffolded for reading notes, exercises, concept work, and future Drake labs.
 - 9 runnable casebook examples are available.
+- 7 Jupyter notebooks are available in `book/` for interactive study.
 - 9 generated casebook figures are available in `docs/casebook_visual_index.md`.
 - 2 generated process storyboards are available in `docs/process_visualizations.md`.
 - Core utilities are covered by pytest tests.
@@ -92,6 +96,14 @@ Generate process storyboards:
 
 ```bash
 python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
+```
+
+Build the Jupyter Book:
+
+```bash
+pip install -r requirements-book.txt
+cd book
+jupyter-book build --site
 ```
 
 ## Learning Principles

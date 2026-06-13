@@ -1,0 +1,21 @@
+version: 1
+project:
+  title: Robotic Manipulation Learning Book
+  description: Interactive Jupyter Book for the robotic manipulation learning casebook.
+  authors:
+    - name:
+        literal: Hollis36
+  github: https://github.com/Hollis36/robotic-manipulation-learning
+  toc:
+    - file: intro.md
+    - file: 00_manipulation_stack.md
+    - file: 01_robot_setup.md
+    - file: 02_transforms_kinematics_ik.ipynb
+    - file: 03_geometric_perception_icp.ipynb
+    - file: 04_grasp_scoring.ipynb
+    - file: 05_motion_planning_rrt.ipynb
+    - file: 06_control_pd_impedance.ipynb
+    - file: 07_segmentation_to_grasp.ipynb
+    - file: 08_rl_gridworld.ipynb
+site:
+  template: book-theme

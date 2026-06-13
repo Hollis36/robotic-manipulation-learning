@@ -54,6 +54,23 @@ def score_repository(root: Path) -> dict:
     ci_passed = _count_existing(ci_required)
     visual_assets = list((root / "docs" / "assets" / "casebook").glob("*.png")) if (root / "docs" / "assets" / "casebook").exists() else []
     process_visuals = list((root / "docs" / "assets" / "storyboards").glob("*.png")) if (root / "docs" / "assets" / "storyboards").exists() else []
+    book_required = [
+        root / "requirements-book.txt",
+        root / "book" / "_config.yml",
+        root / "book" / "_toc.yml",
+        root / "book" / "myst.yml",
+        root / "book" / "intro.md",
+        root / "book" / "00_manipulation_stack.md",
+        root / "book" / "01_robot_setup.md",
+        root / "book" / "02_transforms_kinematics_ik.ipynb",
+        root / "book" / "03_geometric_perception_icp.ipynb",
+        root / "book" / "04_grasp_scoring.ipynb",
+        root / "book" / "05_motion_planning_rrt.ipynb",
+        root / "book" / "06_control_pd_impedance.ipynb",
+        root / "book" / "07_segmentation_to_grasp.ipynb",
+        root / "book" / "08_rl_gridworld.ipynb",
+    ]
+    book_passed = _count_existing(book_required)
 
     categories = {
         "top_level_docs": _category(round(top_level_passed / len(top_level_required) * 100), top_level_passed, len(top_level_required)),
@@ -64,17 +81,19 @@ def score_repository(root: Path) -> dict:
         "ci": _category(round(ci_passed / len(ci_required) * 100), ci_passed, len(ci_required)),
         "visual_assets": _category(round(min(len(visual_assets), 9) / 9 * 100), len(visual_assets), 9),
         "process_visuals": _category(round(min(len(process_visuals), 2) / 2 * 100), len(process_visuals), 2),
+        "jupyter_book": _category(round(book_passed / len(book_required) * 100), book_passed, len(book_required)),
     }
 
     weights = {
-        "top_level_docs": 0.14,
-        "chapter_coverage": 0.19,
-        "casebook": 0.15,
+        "top_level_docs": 0.13,
+        "chapter_coverage": 0.18,
+        "casebook": 0.14,
         "tests": 0.15,
-        "deep_learning_docs": 0.15,
-        "ci": 0.1,
+        "deep_learning_docs": 0.14,
+        "ci": 0.09,
         "visual_assets": 0.07,
         "process_visuals": 0.05,
+        "jupyter_book": 0.05,
     }
     total_score = round(sum(categories[name]["score"] * weight for name, weight in weights.items()))
     recommendations = []

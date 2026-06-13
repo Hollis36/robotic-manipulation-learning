@@ -8,7 +8,9 @@ venv/
 env/
 .DS_Store
 outputs/
+_build/
 casebook/*/outputs/*
 dse_results/outputs/
+book/_build/
 *.pdf
 !docs/**/*.pdf

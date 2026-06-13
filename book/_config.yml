@@ -1,0 +1,22 @@
+title: Robotic Manipulation Learning Book
+author: Hollis36
+copyright: "2026"
+logo: ""
+
+execute:
+  execute_notebooks: "off"
+
+repository:
+  url: https://github.com/Hollis36/robotic-manipulation-learning
+  branch: main
+
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
+
+sphinx:
+  config:
+    language: zh_CN
+    html_theme_options:
+      navigation_with_keys: false

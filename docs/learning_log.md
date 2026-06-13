@@ -119,6 +119,37 @@ Next quality target:
 
 - Add optional animation or trace tables for examples where a static image hides important state transitions.
 
+## 2026-06-13 Jupyter Book Pass
+
+Added an interactive Jupyter Book learning path for the repository.
+
+Artifacts produced:
+
+- `book/_config.yml`
+- `book/_toc.yml`
+- `book/intro.md`
+- `book/00_manipulation_stack.md`
+- `book/01_robot_setup.md`
+- `book/02_transforms_kinematics_ik.ipynb`
+- `book/03_geometric_perception_icp.ipynb`
+- `book/04_grasp_scoring.ipynb`
+- `book/05_motion_planning_rrt.ipynb`
+- `book/06_control_pd_impedance.ipynb`
+- `book/07_segmentation_to_grasp.ipynb`
+- `book/08_rl_gridworld.ipynb`
+- `tools/generate_jupyter_book_notebooks.py`
+- `requirements-book.txt`
+
+Quality checks:
+
+- Book structure is covered by `tests/test_jupyter_book.py`.
+- Notebooks reuse `src/rml` instead of duplicating casebook logic.
+- Repository score now tracks `jupyter_book`.
+
+Next quality target:
+
+- Add GitHub Pages publishing once the book build is stable in CI.
+
 
 ## Reflection Template
 

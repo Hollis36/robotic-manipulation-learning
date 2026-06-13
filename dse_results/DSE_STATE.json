@@ -1,15 +1,15 @@
 {
-  "iteration": 23,
+  "iteration": 24,
   "status": "completed",
   "task": "Adapted DSE learning loop over Robotic Manipulation PDFs and repository quality dimensions",
   "objective": "maximize teaching readiness and repository quality",
   "best_metric": 100,
   "best_params": {
     "teaching_order": "system view -> robot setup -> kinematics -> perception -> grasping -> planning -> control -> deep perception -> RL -> Drake labs",
-    "primary_artifact": "docs/process_visualizations.md",
+    "primary_artifact": "book/intro.md",
     "quality_score_command": "python tools/score_repository.py"
   },
-  "total_iterations": 24,
+  "total_iterations": 25,
   "timeout": "2h",
   "patience_counter": 0,
   "constraint": "Do not reproduce long source passages; keep PDFs out of Git."

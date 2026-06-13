@@ -51,5 +51,6 @@ Status: full-course overview completed via adapted `dse-loop`; chapter-by-chapte
 - [x] Add repository quality scoring and GitHub Actions tests.
 - [x] Add small output plots where they clarify the idea.
 - [x] Add process storyboards for core iterative examples.
+- [x] Add a Jupyter Book learning path for interactive study.
 - [x] Create a GitHub repository.
 - [x] Push a stable version into `main`.

@@ -9,6 +9,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Every case has a README, run command, expected output, and chapter link.
 - Every case has a generated visual asset when a picture clarifies the idea.
 - Core iterative algorithms have process visualizations when the intermediate states teach more than the final answer.
+- The main learning path is available as a Jupyter Book with runnable notebooks.
 - Every advanced topic has a clear prerequisite.
 - Failure modes are documented, not hidden.
 
@@ -29,6 +30,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - CI runs tests on push and pull request.
 - Casebook figures are generated from code, not hand-edited.
 - Process storyboards are generated from code and tracked as small, reviewable assets.
+- Jupyter Book sources are tracked, while generated `_build/` output is ignored.
 
 ## Study Quality
 
@@ -52,4 +54,12 @@ Generate visual assets:
 ```bash
 python tools/generate_casebook_figures.py docs/assets/casebook
 python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
+```
+
+Build the learning book:
+
+```bash
+pip install -r requirements-book.txt
+cd book
+jupyter-book build --site
 ```

@@ -89,3 +89,18 @@ python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
 ```
 
 The repository scorer now tracks `process_visuals` as a separate category, so future quality passes can distinguish static visual coverage from process-level teaching assets.
+
+## Jupyter Book Pass
+
+The next DSE target was interactive teaching. The repository now includes a Jupyter Book source tree under `book/` with:
+
+- a manipulation-stack introduction,
+- robot setup notes,
+- seven runnable notebooks covering transforms, kinematics, IK, ICP, grasp scoring, RRT, PD control, segmentation-to-grasp, and RL gridworlds.
+
+The notebooks reuse `src/rml` package code rather than duplicating casebook logic. The repository scorer now tracks `jupyter_book`, and the book can be built with the current MyST-backed Jupyter Book CLI:
+
+```bash
+cd book
+jupyter-book build --site
+```
