@@ -18,6 +18,8 @@ For each chapter:
 4. Record the implementation lesson and remaining questions.
 5. Decide whether the chapter needs a Drake lab.
 
+Status: full-course overview completed via adapted `dse-loop`; chapter-by-chapter deep study continues from Chapter 2.
+
 ### Chapter Progress
 
 | Chapter | First-pass notes | Exercises | Casebook link | Next action |

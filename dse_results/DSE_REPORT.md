@@ -1,0 +1,43 @@
+# Adapted DSE Learning Loop Report
+
+**Task:** Learn the full local *Robotic Manipulation* chapter set and prepare to teach it.
+
+**Total iterations:** 15 source PDFs
+
+## Objective
+
+- **Metric:** teaching readiness
+- **Direction:** maximize
+- **Baseline:** Chapter 1 first pass only
+- **Best found:** full-course map plus teaching guide
+
+## Search Trajectory
+
+The loop processed the Preface, Chapters 1-11, and Appendices A-C. Each iteration extracted chapter structure, mapped it into the repository's learning model, and connected the content to casebook examples where possible.
+
+## High-Level Result
+
+The course has a clean learning arc:
+
+1. Establish why manipulation is a systems problem.
+2. Define the robot, gripper, sensors, and simulator interface.
+3. Learn geometry and kinematics for scripted pick-and-place.
+4. Add geometric perception so object pose is estimated instead of assumed.
+5. Study bin picking as a bridge between geometric methods, contact, data, and task-level logic.
+6. Add motion planning when hand-written trajectories are insufficient.
+7. Add control when planned motion must be executed near dynamic and contact limits.
+8. Add detection, segmentation, and learned perception for clutter and object diversity.
+9. Add RL as a framework for learning policies in manipulation settings.
+10. Use Drake and the Manipulation Station appendices as the software/hardware path.
+
+## Stopping Reason
+
+Success criteria met: every local PDF is represented in a learner-owned map, and the teaching sequence is ready.
+
+## Recommendations
+
+- Teach from the stack view first, then go chapter by chapter.
+- Use the existing `casebook/` examples as live demonstrations.
+- Do not start Drake labs until Chapter 2 and Appendix A environment assumptions are clear.
+- Keep Chapter 6 as future content because the local PDF is only a placeholder.
+

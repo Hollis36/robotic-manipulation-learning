@@ -1,0 +1,17 @@
+iteration,pdf,pages,section_count,artifact,coverage_score,constraint_met,notes
+0,00_Preface.pdf,2,0,docs/full_course_learning_map.md,80,yes,"Motivation and course framing captured."
+1,01_Chapter_1_Introduction.pdf,6,7,chapters/ch01_introduction,100,yes,"First-pass notes already completed."
+2,02_Chapter_2_Lets_get_you_a_robot.pdf,15,6,docs/full_course_learning_map.md,90,yes,"Robot hardware and simulation interface mapped."
+3,03_Chapter_3_Basic_Pick_and_Place.pdf,25,11,docs/full_course_learning_map.md,95,yes,"Transforms, kinematics, IK, grasp pose, and trajectory role mapped."
+4,04_Chapter_4_Geometric_Pose_Estimation.pdf,28,10,docs/full_course_learning_map.md,95,yes,"Depth sensing, point clouds, ICP, constraints, and tracking mapped."
+5,05_Chapter_5_Bin_Picking.pdf,30,8,docs/full_course_learning_map.md,95,yes,"Clutter generation, contact, grasp scoring, task logic, and corner cases mapped."
+6,06_Chapter_6_Mobile_Manipulation.pdf,1,0,docs/full_course_learning_map.md,60,yes,"Local PDF only says coming soon; future bridge noted."
+7,07_Chapter_7_Motion_Planning.pdf,15,6,docs/full_course_learning_map.md,90,yes,"IK, trajectory optimization, sampling planning, TOPP, and GCS mapped."
+8,08_Chapter_8_Manipulator_Control.pdf,17,6,docs/full_course_learning_map.md,90,yes,"Control toolbox, point-mass intuition, general manipulator control, and peg-in-hole mapped."
+9,09_Chapter_9_Object_Detection_and_Segmentation.pdf,8,5,docs/full_course_learning_map.md,85,yes,"Deep perception entry point, detection, segmentation, data, and extensions mapped."
+10,10_Chapter_10_Deep_Perception_for_Manipulation.pdf,2,6,docs/full_course_learning_map.md,80,yes,"Manipulation-specific perception targets mapped."
+11,11_Chapter_11_Reinforcement_Learning.pdf,4,5,docs/full_course_learning_map.md,80,yes,"RL interfaces and algorithm families mapped."
+12,12_Appendix_A_Drake.pdf,2,4,docs/full_course_learning_map.md,80,yes,"pydrake, notebooks, local setup, and help path mapped."
+13,13_Appendix_B_Manipulation_Station.pdf,2,4,docs/full_course_learning_map.md,75,yes,"Hardware station, message passing, iiwa/WSG/Realsense notes mapped."
+14,14_Appendix_C_Miscellaneous.pdf,2,4,docs/full_course_learning_map.md,70,yes,"Citation, annotation etiquette, final project pointer, and feedback note mapped."
+

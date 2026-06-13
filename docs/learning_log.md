@@ -38,6 +38,31 @@ Next learning step:
 
 - Move to Chapter 2 and connect robot hardware descriptions, sensors, hands, and simulation interfaces to the later casebook examples.
 
+## 2026-06-13 Full Course DSE Loop
+
+Completed an adapted `dse-loop` pass over all 15 local PDFs.
+
+Artifacts produced:
+
+- `docs/full_course_learning_map.md`
+- `docs/teaching_guide.md`
+- `docs/study_sessions/full_course_dse_loop.md`
+- `dse_results/DSE_REPORT.md`
+- `dse_results/dse_log.csv`
+
+Teaching sequence selected:
+
+1. Manipulation stack and system view.
+2. Robot setup.
+3. Coordinates, kinematics, and IK.
+4. Geometric perception.
+5. Bin picking and grasp selection.
+6. Motion planning.
+7. Manipulator control.
+8. Detection, segmentation, and deep perception.
+9. Reinforcement learning.
+10. Drake and hardware appendices.
+
 
 ## Reflection Template
 

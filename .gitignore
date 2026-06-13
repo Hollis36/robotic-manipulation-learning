@@ -9,6 +9,6 @@ env/
 .DS_Store
 outputs/
 casebook/*/outputs/*
+dse_results/outputs/
 *.pdf
 !docs/**/*.pdf
-
