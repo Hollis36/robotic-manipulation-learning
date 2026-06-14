@@ -163,11 +163,11 @@ Quality checks:
 - Pages workflow is covered by `tests/test_jupyter_book.py`.
 - Local static HTML build uses `jupyter-book build --html --strict`.
 - Repository score now includes the Pages workflow in `jupyter_book`.
-- Deploy is gated to public repositories; the current private repository plan does not support Pages.
+- Deploy is gated to public repositories.
 
 Next quality target:
 
-- Make the repository public or upgrade the plan, then verify the public Pages URL after the first deployment.
+- Publish the full online platform and verify the public Pages URL after the first deployment.
 
 ## 2026-06-14 Online Platform Smoke Test
 
@@ -187,11 +187,32 @@ Quality checks:
 - `make verify` passed locally with 56 tests.
 - GitHub Actions passed for `tests`.
 - GitHub Actions `pages` build passed and uploaded the Pages artifact.
-- GitHub Actions `pages` deploy was skipped because the repository is private and the workflow intentionally deploys only for public repositories.
+- At this stage, GitHub Actions `pages` validated the build artifact but did not yet publish because deployment was still gated to public repositories.
 
 Next quality target:
 
-- Make the repository public or use a GitHub plan that supports private-repository Pages, then rerun the `pages` workflow and verify the public URL.
+- Publish the repository-backed Pages site and verify the public URL.
+
+## 2026-06-14 Public Pages Deployment
+
+Published the online learning platform on GitHub Pages.
+
+Repository state:
+
+- Repository visibility changed to public after checking that tracked files did not include source PDFs, large archives, build caches, or obvious secret-token patterns.
+- GitHub Pages was enabled with `build_type: workflow`.
+- Public URL: <https://hollis36.github.io/robotic-manipulation-learning/>
+
+Quality checks:
+
+- GitHub Actions `pages` build passed.
+- GitHub Actions `pages` deploy passed.
+- Public HTTP checks returned 200 for `/`, `/favicon.ico`, `/labs.html`, `/book/`, and the first JupyterLite notebook route.
+- Public page content checks confirmed the launch page and lab page include the expected JupyterLite, Codespaces, and notebook links.
+
+Next quality target:
+
+- Use the public site as the default entry point for learning sessions, while keeping Codespaces as the full online programming environment.
 
 ## 2026-06-13 Book Operations Pass
 

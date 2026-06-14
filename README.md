@@ -70,7 +70,7 @@ references/ How local source PDFs are used without republishing them.
 - VS Code tasks are available for setup, book serving, verification, figure generation, and the first casebook run.
 - The online platform builds to `_site/` with a launch page, rendered book, and JupyterLite browser coding workspace.
 - The experiment launcher at `platform/labs.html` links every online notebook and the full Codespaces casebook route.
-- GitHub Pages deployment is configured for the full online platform; deployment runs automatically when the repository is public.
+- GitHub Pages deployment is live at <https://hollis36.github.io/robotic-manipulation-learning/>.
 - 9 generated casebook figures are available in `docs/casebook_visual_index.md`.
 - 2 generated process storyboards are available in `docs/process_visualizations.md`.
 - Core utilities are covered by pytest tests.

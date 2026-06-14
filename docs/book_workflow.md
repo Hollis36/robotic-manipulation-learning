@@ -107,10 +107,14 @@ The published artifact contains:
 - `/book/`: rendered Jupyter Book.
 - `/lite/lab/index.html`: JupyterLite browser coding environment.
 
-The current repository is a private repository, and the current GitHub plan does not support GitHub Pages for it. Because of that, deployment is gated to public repositories:
+The repository is published with GitHub Pages at:
+
+<https://hollis36.github.io/robotic-manipulation-learning/>
+
+Deployment is still gated to public repositories:
 
 ```yaml
 if: github.ref == 'refs/heads/main' && github.event.repository.private == false
 ```
 
-When the repository becomes public, the same workflow can deploy automatically.
+If the repository is made private again, this gate keeps the workflow in build-validation mode unless private Pages support is explicitly enabled.

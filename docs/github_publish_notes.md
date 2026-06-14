@@ -19,21 +19,21 @@ Then open a pull request from `build-learning-repo-v1` into `main`, or merge loc
 
 Use a public repository if the content remains learner-owned and the source PDFs stay ignored. Use a private repository if you later include copied source material or large local datasets.
 
-## GitHub Pages Readiness Check
+## GitHub Pages Publication Check
 
-Checked on 2026-06-14.
+Checked on 2026-06-14 after enabling public Pages deployment.
 
 Current state:
 
 - Repository: `Hollis36/robotic-manipulation-learning`
-- Visibility: private
+- Visibility: public
 - GitHub account plan reported by `gh api user`: free
-- Pages API: `GET /repos/Hollis36/robotic-manipulation-learning/pages` returns 404
-- Public URL: `https://hollis36.github.io/robotic-manipulation-learning/` returns 404
-- Latest checked commit: `4bac389`
+- Pages API: enabled with `build_type: workflow`
+- Public URL: `https://hollis36.github.io/robotic-manipulation-learning/`
+- First verified deployed commit: `2a86495`
 - GitHub Actions `tests`: passed
-- GitHub Actions `pages`: build passed and uploaded the Pages artifact
-- GitHub Actions `pages` deploy job: skipped because `.github/workflows/pages.yml` intentionally gates deployment to public repositories
+- GitHub Actions `pages`: build passed, uploaded the Pages artifact, and deployed successfully
+- Verified public routes: `/`, `/favicon.ico`, `/labs.html`, `/book/`, and `/lite/lab/index.html?path=notebooks/02_transforms_kinematics_ik.ipynb`
 
 The deploy gate is:
 
@@ -41,18 +41,13 @@ The deploy gate is:
 if: github.ref == 'refs/heads/main' && github.event.repository.private == false
 ```
 
-This means the current 404 is a publication-setting issue, not a site-build issue.
+This keeps automatic deployment tied to a public repository. If the repository is made private again, the workflow can still validate the build artifact, but deploy will be skipped unless the account plan and repository settings support private Pages.
 
-To publish the online learning platform:
-
-1. Make the repository public, or use a GitHub plan that supports Pages deployment from private repositories.
-2. In repository Settings -> Pages, use GitHub Actions as the Pages source if GitHub asks for a source.
-3. Rerun the `pages` workflow on `main`.
-4. Verify:
+To recheck the published site:
 
 ```bash
 curl -I -L https://hollis36.github.io/robotic-manipulation-learning/
 curl -I -L https://hollis36.github.io/robotic-manipulation-learning/favicon.ico
+curl -I -L https://hollis36.github.io/robotic-manipulation-learning/labs.html
+curl -I -L https://hollis36.github.io/robotic-manipulation-learning/book/
 ```
-
-Do not remove the private-repository deploy gate unless the repository is intended to be published or the account plan has been verified to support private Pages safely.

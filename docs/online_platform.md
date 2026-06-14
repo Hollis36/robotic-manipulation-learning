@@ -76,4 +76,17 @@ Because the book is mounted under `/book/`, the workflow sets `BOOK_BASE_URL` to
 to `/book`, which keeps Book CSS, JavaScript, images, and internal navigation
 aligned with the platform route.
 
-Current constraint: this repository is private, and the current GitHub plan has not enabled private-repository Pages deployment. The workflow still validates the full build. Actual public deployment requires making the repository public or using a GitHub plan that supports Pages for private repositories.
+Current deployment:
+
+- Repository: `Hollis36/robotic-manipulation-learning`
+- Public URL: <https://hollis36.github.io/robotic-manipulation-learning/>
+- Pages source: GitHub Actions workflow
+- Published routes: `/`, `/labs.html`, `/book/`, and `/lite/lab/index.html`
+
+The deploy job is still gated to public repositories:
+
+```yaml
+if: github.ref == 'refs/heads/main' && github.event.repository.private == false
+```
+
+If the repository is made private again, the workflow can still validate the full build artifact, but Pages deployment will be skipped unless the GitHub account plan and repository settings support private Pages.

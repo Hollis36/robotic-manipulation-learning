@@ -40,7 +40,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Jupyter Book sources are tracked, while generated `_build/` output is ignored.
 - Jupyter Book page figures are generated from code and tracked as small, reviewable assets.
 - VS Code workspace files are tracked when they improve reproducible study workflows.
-- GitHub Pages deployment builds `_site/` from `platform/`, `book/`, and JupyterLite; automatic deployment is gated to public repositories because the current private repository plan does not support Pages.
+- GitHub Pages deployment builds `_site/` from `platform/`, `book/`, and JupyterLite; the public site is served from `https://hollis36.github.io/robotic-manipulation-learning/`, and automatic deployment remains gated to public repositories.
 
 ## Study Quality
 

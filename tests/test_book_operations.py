@@ -32,7 +32,8 @@ def test_book_workflow_guide_links_commands_and_pages_constraint():
     assert "make book-build" in text
     assert "make book-serve" in text
     assert "make verify" in text
-    assert "private repository" in text
+    assert "https://hollis36.github.io/robotic-manipulation-learning/" in text
+    assert "private Pages support" in text
     assert "GitHub Pages" in text
 
 
