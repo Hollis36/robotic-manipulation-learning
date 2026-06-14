@@ -169,6 +169,30 @@ Next quality target:
 
 - Make the repository public or upgrade the plan, then verify the public Pages URL after the first deployment.
 
+## 2026-06-14 Online Platform Smoke Test
+
+Tested the built website locally and checked the GitHub Pages deployment chain.
+
+Artifacts updated:
+
+- `tools/build_online_platform.py`
+- `tests/test_online_platform.py`
+- `docs/github_publish_notes.md`
+
+Quality checks:
+
+- `make online-build` builds the launch page, rendered book, and JupyterLite workspace into `_site/`.
+- Browser smoke test covered the launch page, experiment launcher, book pages, first JupyterLite notebook, all notebook launcher links, representative internal links, and mobile layouts.
+- The smoke test found a root favicon 404; the build now publishes `favicon.ico` at the site root.
+- `make verify` passed locally with 56 tests.
+- GitHub Actions passed for `tests`.
+- GitHub Actions `pages` build passed and uploaded the Pages artifact.
+- GitHub Actions `pages` deploy was skipped because the repository is private and the workflow intentionally deploys only for public repositories.
+
+Next quality target:
+
+- Make the repository public or use a GitHub plan that supports private-repository Pages, then rerun the `pages` workflow and verify the public URL.
+
 ## 2026-06-13 Book Operations Pass
 
 Added local operation shortcuts for the Jupyter Book learning workflow.
