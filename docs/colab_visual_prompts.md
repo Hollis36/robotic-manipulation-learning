@@ -1,0 +1,66 @@
+# Colab Visual Prompts
+
+These prompts generate concept images for the Colab learning notebooks. The images explain concepts; numerical evidence comes from the code-generated result figures.
+
+## 02 Transforms, Kinematics, IK
+
+- notebook: `02_transforms_kinematics_ik.ipynb`
+- image: `book/assets/colab/02_transforms_kinematics_ik_concept.png`
+- insertion point: `## Concept Map`
+- teaching intent: show frame composition, a planar robot arm, a target point, and differential IK as an iterative error reduction process.
+- prompt: professional robotics education illustration, clean light engineering background, planar robotic arm with three joints, coordinate frames shown as colored axes near world, gripper, and object, target point and final end-effector point connected by an error vector, subtle ghosted intermediate arm positions, high contrast, notebook-width composition, no embedded text, no logos
+- negative prompt: photorealistic clutter, unreadable tiny labels, brand logos, cartoon characters, dark background, misleading 3D humanoid robot, excessive decorative gradients
+
+## 03 Geometric Perception And ICP
+
+- notebook: `03_geometric_perception_icp.ipynb`
+- image: `book/assets/colab/03_geometric_perception_icp_concept.png`
+- insertion point: `## Concept Map`
+- teaching intent: show two point clouds being aligned by rigid transform estimation.
+- prompt: professional robotics education illustration, clean point cloud registration scene, blue source points and orange target points, translucent arrows showing correspondences, rigid transform arc between clouds, small robot camera observing an object on a table, light engineering grid background, no embedded text, high contrast, precise technical style
+- negative prompt: noisy unreadable point cloud, random abstract dots, heavy text, logos, dark cyberpunk style, photorealistic human hands
+
+## 04 Grasp Scoring
+
+- notebook: `04_grasp_scoring.ipynb`
+- image: `book/assets/colab/04_grasp_scoring_concept.png`
+- insertion point: `## Concept Map`
+- teaching intent: show point-cloud grasp candidates and why balanced antipodal contacts score higher.
+- prompt: professional robotics education illustration, bin-picking tabletop scene, simplified object point cloud, three parallel jaw gripper candidates with one highlighted best candidate, contact points indicated with clean markers, balanced left-right contact intuition, light background, no embedded text, technical diagram aesthetic
+- negative prompt: cluttered warehouse, human hands, unreadable annotations, aggressive shadows, logos, overly realistic metal textures
+
+## 05 Motion Planning With RRT
+
+- notebook: `05_motion_planning_rrt.ipynb`
+- image: `book/assets/colab/05_motion_planning_rrt_concept.png`
+- insertion point: `## Concept Map`
+- teaching intent: show a sampling tree growing around an obstacle from start to goal.
+- prompt: professional robotics education illustration, 2D motion planning workspace, circular obstacle, green start, gold goal, blue RRT tree branches expanding through free space, final path highlighted with thick line, faint samples in background, clean grid, no embedded text, high readability
+- negative prompt: maze game style, dark neon background, unreadable labels, photorealistic robot scene, chaotic random lines
+
+## 06 Control: PD And Impedance Intuition
+
+- notebook: `06_control_pd_impedance.ipynb`
+- image: `book/assets/colab/06_control_pd_impedance_concept.png`
+- insertion point: `## Concept Map`
+- teaching intent: show a mass-spring-damper intuition connecting position target, damping, and control response.
+- prompt: professional robotics education illustration, simplified end-effector mass connected to virtual spring and damper, target position marker, smooth response curve in the background, control arrow pushing toward target, light engineering diagram style, no embedded text, colorblind-safe palette
+- negative prompt: complex humanoid robot, unreadable equation text, dark background, decorative bokeh, logos
+
+## 07 Segmentation To Grasp
+
+- notebook: `07_segmentation_to_grasp.ipynb`
+- image: `book/assets/colab/07_segmentation_to_grasp_concept.png`
+- insertion point: `## Concept Map`
+- teaching intent: show how a segmentation mask selects target points before grasp scoring.
+- prompt: professional robotics education illustration, RGB-D camera view of tabletop objects, semi-transparent segmentation mask selecting one object, selected target point cloud flowing into a gripper candidate, false positive point subtly shown near background, clean pipeline composition, no embedded text, light background
+- negative prompt: dense text labels, photo collage, logos, dramatic lighting, unrealistic humanoid robot
+
+## 08 RL Grasping Gridworld
+
+- notebook: `08_rl_gridworld.ipynb`
+- image: `book/assets/colab/08_rl_gridworld_concept.png`
+- insertion point: `## Concept Map`
+- teaching intent: show state, action, reward, and policy intuition in a small grasping gridworld.
+- prompt: professional robotics education illustration, small 4x4 gridworld, robot gripper icon moving across cells toward an object, arrows showing actions, highlighted reward event at grasp cell, simple policy arrows, clean light background, no embedded text, readable notebook illustration
+- negative prompt: video game UI, pixel art, unreadable small text, dark fantasy style, logos
