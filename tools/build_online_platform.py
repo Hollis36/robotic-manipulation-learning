@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -18,8 +19,11 @@ SITE_ROOT = PROJECT_ROOT / "_site"
 LITE_CONTENTS = PROJECT_ROOT / "_online" / "lite_files"
 
 
-def run(command: list[str], cwd: Path = PROJECT_ROOT) -> None:
-    subprocess.run(command, cwd=cwd, check=True)
+def run(command: list[str], cwd: Path = PROJECT_ROOT, env: dict[str, str] | None = None) -> None:
+    process_env = os.environ.copy()
+    if env:
+        process_env.update(env)
+    subprocess.run(command, cwd=cwd, env=process_env, check=True)
 
 
 def copy_platform_shell(site_root: Path) -> None:
@@ -33,7 +37,12 @@ def copy_platform_shell(site_root: Path) -> None:
 
 def copy_book(site_root: Path) -> None:
     book_output = PROJECT_ROOT / "book" / "_build" / "html"
-    run(["jupyter-book", "build", "--html", "--strict"], cwd=PROJECT_ROOT / "book")
+    book_base_url = os.environ.get("BOOK_BASE_URL", "/book")
+    run(
+        ["jupyter-book", "build", "--html", "--strict"],
+        cwd=PROJECT_ROOT / "book",
+        env={"BASE_URL": book_base_url},
+    )
     shutil.copytree(book_output, site_root / "book", dirs_exist_ok=True)
 
 
@@ -54,6 +63,8 @@ def build_lite(site_root: Path) -> None:
 
 def build_online_platform(site_root: Path | str = SITE_ROOT) -> Path:
     site_root = Path(site_root)
+    if site_root.exists():
+        shutil.rmtree(site_root)
     copy_platform_shell(site_root)
     copy_book(site_root)
     build_lite(site_root)

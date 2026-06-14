@@ -37,6 +37,8 @@ def test_jupyterlite_requirements_and_build_scripts_exist():
     assert '"assets"' in build_script
     assert '"figures"' in build_script
     assert "intro.png" in build_script
+    assert "BOOK_BASE_URL" in build_script
+    assert '"BASE_URL"' in build_script
 
 
 def test_build_script_bootstraps_project_root_for_direct_execution():
@@ -83,6 +85,7 @@ def test_pages_workflow_builds_online_platform_artifact():
 
     assert "pip install -r requirements-online.txt" in commands
     assert "python tools/build_online_platform.py" in commands
+    assert "BOOK_BASE_URL" in workflow_text
     assert "path: _site" in workflow_text
 
 

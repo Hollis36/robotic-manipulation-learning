@@ -56,4 +56,9 @@ The Pages workflow builds `_site/` from:
 - `book/_build/html`
 - JupyterLite output
 
+Because the book is mounted under `/book/`, the workflow sets `BOOK_BASE_URL` to
+`/${repository_name}/book` before building the Jupyter Book. Local builds default
+to `/book`, which keeps Book CSS, JavaScript, images, and internal navigation
+aligned with the platform route.
+
 Current constraint: this repository is private, and the current GitHub plan has not enabled private-repository Pages deployment. The workflow still validates the full build. Actual public deployment requires making the repository public or using a GitHub plan that supports Pages for private repositories.
