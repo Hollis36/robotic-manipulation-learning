@@ -74,10 +74,14 @@ def test_tracked_book_figures_exist_for_each_page():
 
 def test_makefile_generates_book_figures_before_verification():
     makefile = Path("Makefile").read_text()
+    verify_line = next(line for line in makefile.splitlines() if line.startswith("verify:"))
+    verify_targets = verify_line.removeprefix("verify:").split()
 
     assert "book-figures:" in makefile
     assert "python tools/generate_book_figures.py" in makefile
-    assert "verify: test score casebook book-figures notebooks book-build" in makefile
+    assert "book-figures" in verify_targets
+    assert "test" in verify_targets
+    assert verify_targets.index("book-figures") < verify_targets.index("test")
 
 
 def test_score_repository_tracks_book_visual_assets():

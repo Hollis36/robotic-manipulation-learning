@@ -61,11 +61,16 @@ public repository with `git clone --depth 1`, and adds `src/` to `sys.path`.
 This keeps the same notebook usable in Colab, JupyterLite, Codespaces, and a
 local checkout.
 
+The Colab page also publishes a concept gallery from `book/assets/colab/*.png`.
+Those PNG files are exported from tracked SVG sources by
+`tools/generate_colab_svg_illustrations.py`, so the visual style is reproducible
+instead of depending on one-off image replacements.
+
 ## Visual And Code Learning Rhythm
 
 The Colab notebooks use a fixed rhythm:
 
-1. AI concept image for the mental model.
+1. SVG-sourced concept image for the mental model.
 2. Code-generated result figure for computed evidence.
 3. Parameter experiment for active learning.
 4. Reflection prompt for short written explanation.

@@ -153,6 +153,10 @@ def score_repository(root: Path) -> dict:
         root / "book" / "assets" / "colab" / f"{notebook.stem}_concept.png"
         for notebook in colab_notebooks
     ]
+    colab_svg_assets = [
+        root / "book" / "assets" / "colab" / "svg" / f"{notebook.stem}_concept.svg"
+        for notebook in colab_notebooks
+    ]
     colab_notebook_markers = [
         "## Concept Map",
         "## Result Figure",
@@ -166,9 +170,11 @@ def score_repository(root: Path) -> dict:
         (root / "docs" / "colab.md").exists(),
         prompt_catalog.exists(),
         (root / "platform" / "colab.html").exists(),
-        (root / "tools" / "generate_jupyter_book_notebooks.py").exists(),
+        (root / "tools" / "generate_jupyter_book_notebooks.py").exists()
+        and (root / "tools" / "generate_colab_svg_illustrations.py").exists(),
         (root / "tools" / "prepare_lite_workspace.py").exists(),
-        all(asset.exists() for asset in colab_concept_assets),
+        all(asset.exists() for asset in colab_concept_assets)
+        and all(asset.exists() and 'data-rml-style="technical-svg-v1"' in asset.read_text() for asset in colab_svg_assets),
         all(path.exists() and all(marker in _page_text(path) for marker in colab_notebook_markers) for path in colab_notebooks),
         all(notebook.name in prompt_catalog_text for notebook in colab_notebooks)
         and all(str(asset.relative_to(root)) in prompt_catalog_text for asset in colab_concept_assets),

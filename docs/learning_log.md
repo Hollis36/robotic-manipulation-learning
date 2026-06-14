@@ -409,6 +409,32 @@ Next quality target:
 
 - Add answer keys or self-check rubrics below the practice tasks.
 
+## 2026-06-14 Colab SVG Illustration System Pass
+
+Replaced the one-off Colab concept images with a reproducible SVG illustration system.
+
+Artifacts produced:
+
+- `tools/generate_colab_svg_illustrations.py`
+- `book/assets/colab/svg/*.svg`
+- Regenerated `book/assets/colab/*.png`
+- Updated `platform/colab.html`
+- Updated `platform/styles.css`
+- Updated `docs/colab_visual_prompts.md`
+- Updated `tools/build_online_platform.py`
+- Updated `tools/score_repository.py`
+
+Quality checks:
+
+- Colab concept images now share a 1600x900 canvas and one technical visual language.
+- SVG sources are tracked as the reviewable source of truth.
+- The online Colab page publishes a concept gallery from the generated PNG assets.
+- `make verify` regenerates Colab illustrations before rebuilding notebooks and the book.
+
+Next quality target:
+
+- Add answer keys or self-check rubrics below the practice tasks.
+
 
 ## Reflection Template
 

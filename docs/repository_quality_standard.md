@@ -15,8 +15,8 @@ This is the quality bar for making the repository useful to future readers, incl
 - VS Code users have tracked tasks, recommended extensions, and a documented learning loop.
 - GitHub Pages builds a full online platform with launch page, book, and browser coding environment.
 - Google Colab users can open every learning notebook from the public repository and run a first-cell setup that loads the project source.
-- Colab notebooks include AI concept images, code-generated result figures, parameter experiments, and reflection prompts.
-- Colab concept image prompts are tracked in the repository, and the generated image assets are copied into the JupyterLite workspace.
+- Colab notebooks include SVG-sourced concept images, code-generated result figures, parameter experiments, and reflection prompts.
+- Colab concept image prompts, SVG sources, and generated PNG assets are tracked in the repository; the PNG assets are copied into the online platform and JupyterLite workspace.
 - Codespaces configuration supports full online programming, testing, and site builds.
 - Every advanced topic has a clear prerequisite.
 - Failure modes are documented, not hidden.
@@ -45,7 +45,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - VS Code workspace files are tracked when they improve reproducible study workflows.
 - GitHub Pages deployment builds `_site/` from `platform/`, `book/`, and JupyterLite; the public site is served from `https://hollis36.github.io/robotic-manipulation-learning/`, and automatic deployment remains gated to public repositories.
 - Colab links are generated from the public GitHub notebook paths, and notebooks bootstrap `src/rml` without requiring manual package setup.
-- Colab visual prompts and concept assets are tracked, reviewable, and reusable across Colab and JupyterLite.
+- Colab visual prompts, SVG source assets, and generated PNG concept assets are tracked, reviewable, and reusable across Colab, the platform gallery, and JupyterLite.
 
 ## Study Quality
 
@@ -70,6 +70,7 @@ Generate visual assets:
 python tools/generate_casebook_figures.py docs/assets/casebook
 python tools/generate_casebook_figures.py --storyboards docs/assets/storyboards
 python tools/generate_book_figures.py
+python tools/generate_colab_svg_illustrations.py
 ```
 
 Build the learning book:

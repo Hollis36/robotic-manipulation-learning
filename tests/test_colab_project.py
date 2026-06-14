@@ -35,8 +35,9 @@ REQUIRED_COLAB_MARKDOWN = [
     "## Reflection Prompt",
 ]
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
-MIN_CONCEPT_IMAGE_WIDTH = 320
-MIN_CONCEPT_IMAGE_HEIGHT = 180
+CONCEPT_IMAGE_WIDTH = 1600
+CONCEPT_IMAGE_HEIGHT = 900
+SVG_STYLE_MARKER = 'data-rml-style="technical-svg-v1"'
 
 
 def _cell_source(cell: dict) -> str:
@@ -99,8 +100,11 @@ def test_online_platform_exposes_colab_route_and_notebook_links():
 
     colab_html = colab_page.read_text()
     assert "Open In Colab" in colab_html
+    assert "concept-gallery" in colab_html
     for notebook in NOTEBOOKS:
         assert f"{COLAB_BASE}/{notebook}" in colab_html
+    for image_name in CONCEPT_IMAGES.values():
+        assert f"assets/colab/{image_name}" in colab_html
 
 
 def test_generated_notebooks_bootstrap_colab_repository_source():
@@ -123,12 +127,46 @@ def test_generated_notebooks_bootstrap_colab_repository_source():
         assert "git clone" in setup_sources[0]
 
 
+def test_colab_svg_illustrations_are_part_of_local_build_workflow():
+    makefile = Path("Makefile").read_text()
+    online_builder = Path("tools/build_online_platform.py").read_text()
+
+    assert "colab-figures:" in makefile
+    assert "python tools/generate_colab_svg_illustrations.py" in makefile
+    assert "colab-figures" in makefile.split("verify:", maxsplit=1)[1]
+    assert 'site_root / "assets" / "colab"' in online_builder
+
+
 def test_score_repository_tracks_colab_project_support():
     report = score_repository(Path("."))
 
     assert "colab_project" in report["categories"]
     assert report["categories"]["colab_project"]["total"] == 8
     assert report["categories"]["colab_project"]["score"] == 100
+
+
+def test_svg_illustration_generator_exports_complete_colab_asset_set(tmp_path):
+    result = subprocess.run(
+        [sys.executable, "tools/generate_colab_svg_illustrations.py", str(tmp_path)],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stderr
+    for image_name in CONCEPT_IMAGES.values():
+        stem = Path(image_name).stem
+        svg_path = tmp_path / "svg" / f"{stem}.svg"
+        png_path = tmp_path / image_name
+
+        assert svg_path.exists(), svg_path
+        svg_text = svg_path.read_text()
+        assert SVG_STYLE_MARKER in svg_text
+        assert len(svg_text) > 8_000
+
+        assert png_path.exists(), png_path
+        assert png_path.stat().st_size > 20_000, png_path
+        assert _png_dimensions(png_path) == (CONCEPT_IMAGE_WIDTH, CONCEPT_IMAGE_HEIGHT)
 
 
 def test_colab_notebooks_include_concept_result_and_parameter_sections():
@@ -165,9 +203,7 @@ def test_colab_concept_images_exist_and_are_large_enough():
         image_path = image_dir / image_name
         assert image_path.exists(), image_path
         assert image_path.stat().st_size > 20_000, image_path
-        width, height = _png_dimensions(image_path)
-        assert width >= MIN_CONCEPT_IMAGE_WIDTH, image_path
-        assert height >= MIN_CONCEPT_IMAGE_HEIGHT, image_path
+        assert _png_dimensions(image_path) == (CONCEPT_IMAGE_WIDTH, CONCEPT_IMAGE_HEIGHT)
 
 
 def test_lite_workspace_receives_colab_concept_images(tmp_path):

@@ -35,6 +35,10 @@ def copy_platform_shell(site_root: Path) -> None:
     figures_root = site_root / "assets" / "figures"
     figures_root.mkdir(parents=True, exist_ok=True)
     shutil.copy2(PROJECT_ROOT / "book" / "assets" / "figures" / "intro.png", figures_root / "intro.png")
+    colab_root = site_root / "assets" / "colab"
+    colab_root.mkdir(parents=True, exist_ok=True)
+    for figure in (PROJECT_ROOT / "book" / "assets" / "colab").glob("*.png"):
+        shutil.copy2(figure, colab_root / figure.name)
 
 
 def copy_book(site_root: Path) -> None:

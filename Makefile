@@ -1,4 +1,4 @@
-.PHONY: test score casebook book-install book-build book-serve book-clean book-figures notebooks online-install online-lite-contents online-build online-serve verify
+.PHONY: test score casebook book-install book-build book-serve book-clean book-figures colab-figures notebooks online-install online-lite-contents online-build online-serve verify
 
 test:
 	pytest -q
@@ -30,6 +30,9 @@ book-clean:
 book-figures:
 	python tools/generate_book_figures.py
 
+colab-figures:
+	python tools/generate_colab_svg_illustrations.py
+
 online-install:
 	python -m pip install -r requirements-book.txt
 	python -m pip install -r requirements-online.txt
@@ -44,4 +47,4 @@ online-build:
 online-serve:
 	python -m http.server 8000 --directory _site
 
-verify: test score casebook book-figures notebooks book-build
+verify: book-figures colab-figures notebooks test score casebook book-build
