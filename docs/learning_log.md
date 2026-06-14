@@ -236,6 +236,29 @@ Next quality target:
 
 - Add answer keys or self-check rubrics below the practice tasks.
 
+## 2026-06-14 VS Code Learning Pass
+
+Added an editor-first learning path so the repository is easier to study inside VS Code.
+
+Artifacts produced:
+
+- `.vscode/tasks.json`
+- `.vscode/settings.json`
+- `.vscode/extensions.json`
+- `docs/vscode_learning.md`
+- `tests/test_vscode_learning.py`
+
+Quality checks:
+
+- VS Code exposes tasks for setup, verification, book serving, book building, figure regeneration, notebook regeneration, and the first casebook run.
+- Recommended extensions cover Python, Pylance, Jupyter, notebook rendering, and Markdown editing.
+- Python analysis and pytest discovery point at the local project structure.
+- Repository score now tracks `vscode_learning`.
+
+Next quality target:
+
+- Add answer keys or self-check rubrics below the practice tasks.
+
 
 ## Reflection Template
 

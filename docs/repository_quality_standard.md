@@ -12,6 +12,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - The main learning path is available as a Jupyter Book with runnable notebooks.
 - Every Jupyter Book page has learning objectives, a checkpoint, and a practice task.
 - Every Jupyter Book page has a dedicated generated visual asset.
+- VS Code users have tracked tasks, recommended extensions, and a documented learning loop.
 - Every advanced topic has a clear prerequisite.
 - Failure modes are documented, not hidden.
 
@@ -23,6 +24,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Generated outputs are either ignored or intentionally small.
 - Code is deterministic by default.
 - Repeated learning operations are available through `Makefile` targets.
+- Editor task shortcuts call the same `Makefile` targets instead of duplicating workflow logic.
 
 ## GitHub Quality
 
@@ -35,6 +37,7 @@ This is the quality bar for making the repository useful to future readers, incl
 - Process storyboards are generated from code and tracked as small, reviewable assets.
 - Jupyter Book sources are tracked, while generated `_build/` output is ignored.
 - Jupyter Book page figures are generated from code and tracked as small, reviewable assets.
+- VS Code workspace files are tracked when they improve reproducible study workflows.
 - GitHub Pages deployment builds static HTML from `book/` and uploads `book/_build/html`; automatic deployment is gated to public repositories because the current private repository plan does not support Pages.
 
 ## Study Quality

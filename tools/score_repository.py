@@ -111,6 +111,13 @@ def score_repository(root: Path) -> dict:
         for page in book_pages
     ]
     book_visuals_passed = _count_existing(book_visuals)
+    vscode_required = [
+        root / ".vscode" / "tasks.json",
+        root / ".vscode" / "settings.json",
+        root / ".vscode" / "extensions.json",
+        root / "docs" / "vscode_learning.md",
+    ]
+    vscode_passed = _count_existing(vscode_required)
 
     categories = {
         "top_level_docs": _category(round(top_level_passed / len(top_level_required) * 100), top_level_passed, len(top_level_required)),
@@ -125,14 +132,15 @@ def score_repository(root: Path) -> dict:
         "book_workflow": _category(round(book_workflow_passed / len(book_workflow_required) * 100), book_workflow_passed, len(book_workflow_required)),
         "book_learning_scaffold": _category(round(book_scaffold_passed / len(book_pages) * 100), book_scaffold_passed, len(book_pages)),
         "book_visuals": _category(round(book_visuals_passed / len(book_visuals) * 100), book_visuals_passed, len(book_visuals)),
+        "vscode_learning": _category(round(vscode_passed / len(vscode_required) * 100), vscode_passed, len(vscode_required)),
     }
 
     weights = {
         "top_level_docs": 0.13,
-        "chapter_coverage": 0.15,
+        "chapter_coverage": 0.14,
         "casebook": 0.14,
         "tests": 0.15,
-        "deep_learning_docs": 0.13,
+        "deep_learning_docs": 0.12,
         "ci": 0.09,
         "visual_assets": 0.07,
         "process_visuals": 0.05,
@@ -140,6 +148,7 @@ def score_repository(root: Path) -> dict:
         "book_workflow": 0.01,
         "book_learning_scaffold": 0.01,
         "book_visuals": 0.02,
+        "vscode_learning": 0.02,
     }
     total_score = round(sum(categories[name]["score"] * weight for name, weight in weights.items()))
     recommendations = []

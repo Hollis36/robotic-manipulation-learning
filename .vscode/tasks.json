@@ -1,0 +1,58 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "RML: Install Book Environment",
+      "type": "shell",
+      "command": "make book-install",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Verify Repository",
+      "type": "shell",
+      "command": "make verify",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Serve Jupyter Book",
+      "type": "shell",
+      "command": "make book-serve",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Build Jupyter Book",
+      "type": "shell",
+      "command": "make book-build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Regenerate Book Figures",
+      "type": "shell",
+      "command": "make book-figures",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Regenerate Notebooks",
+      "type": "shell",
+      "command": "make notebooks",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Run First Casebook Example",
+      "type": "shell",
+      "command": "PYTHONPATH=src python casebook/001_spatial_transforms_numpy/run.py",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

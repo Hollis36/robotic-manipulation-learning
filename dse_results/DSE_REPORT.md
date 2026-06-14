@@ -151,3 +151,14 @@ The next DSE target was page-level visual quality. The book previously had runna
 - `book/assets/figures/*.png`
 
 Every book page embeds a dedicated generated figure. The images use a shared Kinematic Atlas style: clean technical diagrams, sparse labels, and a consistent palette for robot state, perception, contact, planning, control, and learning. The repository scorer now tracks `book_visuals` as a separate category.
+
+## VS Code Learning Pass
+
+The next DSE target was editor ergonomics. The repository now includes tracked VS Code configuration so the learning loop is accessible through the Command Palette:
+
+- `.vscode/tasks.json`
+- `.vscode/settings.json`
+- `.vscode/extensions.json`
+- `docs/vscode_learning.md`
+
+The tasks call the same `Makefile` targets used by CI and local verification, so VS Code remains a thin convenience layer rather than a separate workflow. The repository scorer now tracks `vscode_learning` as a separate category.
