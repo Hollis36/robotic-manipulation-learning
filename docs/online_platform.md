@@ -4,7 +4,7 @@ This repository can be deployed as a GitHub-hosted online learning platform.
 
 ## What Gets Published
 
-The GitHub Pages artifact is built into `_site/` and contains three learning surfaces:
+The GitHub Pages artifact is built into `_site/` and publishes these learning routes:
 
 | Path | Purpose |
 | --- | --- |
@@ -60,6 +60,15 @@ Each notebook includes a setup cell that detects `google.colab`, clones the
 public repository with `git clone --depth 1`, and adds `src/` to `sys.path`.
 This keeps the same notebook usable in Colab, JupyterLite, Codespaces, and a
 local checkout.
+
+## Visual And Code Learning Rhythm
+
+The Colab notebooks use a fixed rhythm:
+
+1. AI concept image for the mental model.
+2. Code-generated result figure for computed evidence.
+3. Parameter experiment for active learning.
+4. Reflection prompt for short written explanation.
 
 ## Full Online Programming With Codespaces
 

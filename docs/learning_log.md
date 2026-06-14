@@ -382,6 +382,33 @@ Next quality target:
 
 - Add answer keys or self-check rubrics below the practice tasks.
 
+## 2026-06-14 Colab Visual Code Upgrade Pass
+
+Improved the Colab notebooks from runnable examples into visual, experiment-driven study notebooks.
+
+Artifacts produced:
+
+- `docs/colab_visual_prompts.md`
+- `book/assets/colab/*.png`
+- Updated generated notebooks in `book/*.ipynb`
+- Updated `tools/generate_jupyter_book_notebooks.py`
+- Updated `tools/prepare_lite_workspace.py`
+- Updated `tools/build_online_platform.py`
+- Updated `platform/colab.html`
+- Updated `docs/online_platform.md`
+- Updated `docs/repository_quality_standard.md`
+
+Quality checks:
+
+- Every Colab notebook now follows the same rhythm: AI concept image, code-generated result figure, parameter experiment, and reflection prompt.
+- Concept images are tracked under `book/assets/colab/` and have source prompts recorded in `docs/colab_visual_prompts.md`.
+- JupyterLite receives Colab concept images under `notebooks/assets/colab/`, matching notebook-relative image paths.
+- Repository score now tracks stronger `colab_project` support with prompt, asset, generator, and Lite copy coverage.
+
+Next quality target:
+
+- Add answer keys or self-check rubrics below the practice tasks.
+
 
 ## Reflection Template
 

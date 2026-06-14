@@ -25,6 +25,16 @@ def _book_page_text(path: Path) -> str:
     return path.read_text()
 
 
+def _page_text(path: Path) -> str:
+    if path.suffix == ".ipynb":
+        notebook = json.loads(path.read_text())
+        return "\n\n".join(
+            cell["source"] if isinstance(cell["source"], str) else "".join(cell["source"])
+            for cell in notebook["cells"]
+        )
+    return path.read_text()
+
+
 def score_repository(root: Path) -> dict:
     """Return a simple quality report for the repository."""
     root = Path(root)
@@ -130,13 +140,40 @@ def score_repository(root: Path) -> dict:
         root / ".github" / "workflows" / "pages.yml",
     ]
     online_passed = _count_existing(online_required)
-    colab_required = [
-        root / "docs" / "colab.md",
-        root / "platform" / "colab.html",
-        root / "tools" / "generate_jupyter_book_notebooks.py",
+    colab_notebooks = [
         root / "book" / "02_transforms_kinematics_ik.ipynb",
+        root / "book" / "03_geometric_perception_icp.ipynb",
+        root / "book" / "04_grasp_scoring.ipynb",
+        root / "book" / "05_motion_planning_rrt.ipynb",
+        root / "book" / "06_control_pd_impedance.ipynb",
+        root / "book" / "07_segmentation_to_grasp.ipynb",
+        root / "book" / "08_rl_gridworld.ipynb",
     ]
-    colab_passed = _count_existing(colab_required)
+    colab_concept_assets = [
+        root / "book" / "assets" / "colab" / f"{notebook.stem}_concept.png"
+        for notebook in colab_notebooks
+    ]
+    colab_notebook_markers = [
+        "## Concept Map",
+        "## Result Figure",
+        "## Parameter Experiment",
+        "COLAB_PARAMETER_EXPERIMENT",
+        "## Reflection Prompt",
+    ]
+    prompt_catalog = root / "docs" / "colab_visual_prompts.md"
+    prompt_catalog_text = prompt_catalog.read_text() if prompt_catalog.exists() else ""
+    colab_checks = [
+        (root / "docs" / "colab.md").exists(),
+        prompt_catalog.exists(),
+        (root / "platform" / "colab.html").exists(),
+        (root / "tools" / "generate_jupyter_book_notebooks.py").exists(),
+        (root / "tools" / "prepare_lite_workspace.py").exists(),
+        all(asset.exists() for asset in colab_concept_assets),
+        all(path.exists() and all(marker in _page_text(path) for marker in colab_notebook_markers) for path in colab_notebooks),
+        all(notebook.name in prompt_catalog_text for notebook in colab_notebooks)
+        and all(str(asset.relative_to(root)) in prompt_catalog_text for asset in colab_concept_assets),
+    ]
+    colab_passed = sum(1 for passed in colab_checks if passed)
 
     categories = {
         "top_level_docs": _category(round(top_level_passed / len(top_level_required) * 100), top_level_passed, len(top_level_required)),
@@ -153,7 +190,7 @@ def score_repository(root: Path) -> dict:
         "book_visuals": _category(round(book_visuals_passed / len(book_visuals) * 100), book_visuals_passed, len(book_visuals)),
         "vscode_learning": _category(round(vscode_passed / len(vscode_required) * 100), vscode_passed, len(vscode_required)),
         "online_platform": _category(round(online_passed / len(online_required) * 100), online_passed, len(online_required)),
-        "colab_project": _category(round(colab_passed / len(colab_required) * 100), colab_passed, len(colab_required)),
+        "colab_project": _category(round(colab_passed / len(colab_checks) * 100), colab_passed, len(colab_checks)),
     }
 
     weights = {
