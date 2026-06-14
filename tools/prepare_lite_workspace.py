@@ -32,6 +32,11 @@ def prepare_lite_workspace(output_dir: Path | str = DEFAULT_OUTPUT) -> list[Path
     shutil.copytree(figures_source, figures_target, dirs_exist_ok=True)
     copied.extend(sorted(figures_target.glob("*.png")))
 
+    colab_source = PROJECT_ROOT / "book" / "assets" / "colab"
+    colab_target = notebooks_dir / "assets" / "colab"
+    shutil.copytree(colab_source, colab_target, dirs_exist_ok=True)
+    copied.extend(sorted(colab_target.glob("*.png")))
+
     package_source = PROJECT_ROOT / "src" / "rml"
     package_target = output_dir / "src" / "rml"
     shutil.copytree(package_source, package_target, dirs_exist_ok=True)

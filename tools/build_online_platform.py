@@ -66,11 +66,14 @@ def build_lite(site_root: Path) -> None:
 
 
 def copy_lite_lab_assets(site_root: Path) -> None:
-    source = PROJECT_ROOT / "book" / "assets" / "figures"
-    target = site_root / "lite" / "lab" / "assets" / "figures"
-    target.mkdir(parents=True, exist_ok=True)
-    for figure in source.glob("*.png"):
-        shutil.copy2(figure, target / figure.name)
+    asset_pairs = [
+        (PROJECT_ROOT / "book" / "assets" / "figures", site_root / "lite" / "lab" / "assets" / "figures"),
+        (PROJECT_ROOT / "book" / "assets" / "colab", site_root / "lite" / "lab" / "assets" / "colab"),
+    ]
+    for source, target in asset_pairs:
+        target.mkdir(parents=True, exist_ok=True)
+        for figure in source.glob("*.png"):
+            shutil.copy2(figure, target / figure.name)
 
 
 def build_online_platform(site_root: Path | str = SITE_ROOT) -> Path:
