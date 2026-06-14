@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>实验导航 - Robotic Manipulation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell shell--compact">
+      <nav class="topline" aria-label="Platform navigation">
+        <a class="back-link" href="index.html">在线学习平台</a>
+        <a class="back-link" href="book/">课程学习书</a>
+        <a class="back-link" href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=Hollis36/robotic-manipulation-learning">Codespaces</a>
+      </nav>
+
+      <section class="lab-hero" aria-labelledby="labs-title">
+        <p class="eyebrow">RUNNABLE LEARNING CASES</p>
+        <h1 id="labs-title">实验导航</h1>
+        <p class="summary">
+          先用 JupyterLite 在浏览器里运行轻量 notebook，再用 Codespaces 打开完整 VS Code 环境运行 casebook、测试和在线平台构建。
+        </p>
+      </section>
+
+      <section class="route-strip" aria-label="Execution modes">
+        <div>
+          <span class="kicker">BROWSER</span>
+          <strong>JupyterLite</strong>
+          <span>无需服务器，适合矩阵、几何、规划和控制的小实验。</span>
+        </div>
+        <div>
+          <span class="kicker">CLOUD IDE</span>
+          <strong>GitHub Codespaces</strong>
+          <span>完整 Python 环境，可运行 pytest、casebook 和静态站点构建。</span>
+        </div>
+      </section>
+
+      <section aria-labelledby="notebooks-title">
+        <h2 id="notebooks-title" class="section-title">在线 Notebook</h2>
+        <div class="lab-grid">
+          <a class="lab-card" href="lite/lab/index.html?path=notebooks/02_transforms_kinematics_ik.ipynb">
+            <span class="lab-meta">02</span>
+            <strong>Transforms, Kinematics, IK</strong>
+            <span>齐次变换、平面机械臂和 differential IK。</span>
+          </a>
+          <a class="lab-card" href="lite/lab/index.html?path=notebooks/03_geometric_perception_icp.ipynb">
+            <span class="lab-meta">03</span>
+            <strong>Geometric Perception And ICP</strong>
+            <span>点云配准、刚体变换估计和误差收敛。</span>
+          </a>
+          <a class="lab-card" href="lite/lab/index.html?path=notebooks/04_grasp_scoring.ipynb">
+            <span class="lab-meta">04</span>
+            <strong>Grasp Scoring</strong>
+            <span>用几何启发式给候选抓取排序。</span>
+          </a>
+          <a class="lab-card" href="lite/lab/index.html?path=notebooks/05_motion_planning_rrt.ipynb">
+            <span class="lab-meta">05</span>
+            <strong>Motion Planning With RRT</strong>
+            <span>采样、碰撞检测和路径回溯。</span>
+          </a>
+          <a class="lab-card" href="lite/lab/index.html?path=notebooks/06_control_pd_impedance.ipynb">
+            <span class="lab-meta">06</span>
+            <strong>PD And Impedance Control</strong>
+            <span>二阶系统、阻尼和接触直觉。</span>
+          </a>
+          <a class="lab-card" href="lite/lab/index.html?path=notebooks/07_segmentation_to_grasp.ipynb">
+            <span class="lab-meta">07</span>
+            <strong>Segmentation To Grasp</strong>
+            <span>从分割结果到目标点云和抓取候选。</span>
+          </a>
+          <a class="lab-card" href="lite/lab/index.html?path=notebooks/08_rl_gridworld.ipynb">
+            <span class="lab-meta">08</span>
+            <strong>RL Grasping Gridworld</strong>
+            <span>小规模 value iteration 和策略可视化。</span>
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="casebook-title">
+        <h2 id="casebook-title" class="section-title">工程案例集</h2>
+        <div class="lab-card lab-card--wide">
+          <div>
+            <span class="lab-meta">CASEBOOK</span>
+            <strong>在 Codespaces 中运行完整案例</strong>
+            <span>这些案例依赖仓库源码和本地测试环境，适合在线 VS Code 里编译、运行、调试和提交记录。</span>
+          </div>
+          <a class="button-link" href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=Hollis36/robotic-manipulation-learning">打开 Codespaces</a>
+        </div>
+        <div class="case-list" aria-label="Casebook examples">
+          <span>001 spatial transforms numpy</span>
+          <span>002 forward kinematics planar arm</span>
+          <span>003 differential ik</span>
+          <span>004 icp pose estimation</span>
+          <span>005 point cloud grasp scoring</span>
+          <span>006 rrt motion planning</span>
+          <span>007 pd impedance control</span>
+          <span>008 segmentation pipeline stub</span>
+          <span>009 rl grasping gridworld</span>
+        </div>
+      </section>
+
+      <section class="workflow" aria-label="Codespaces commands">
+        <div>
+          <h2>Codespaces 编译运行</h2>
+          <ol>
+            <li>打开 Codespaces 后等待 devcontainer 自动安装依赖。</li>
+            <li>在 VS Code 任务面板运行 `RML: Run All Casebook Examples`。</li>
+            <li>修改 notebook 或 `src/rml` 后运行 `RML: Verify Repository`。</li>
+          </ol>
+        </div>
+        <div class="terminal">
+          <span>make online-install</span>
+          <span>make casebook</span>
+          <span>make verify</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

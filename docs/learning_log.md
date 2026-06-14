@@ -285,6 +285,30 @@ Next quality target:
 
 - Add answer keys or self-check rubrics below the practice tasks.
 
+## 2026-06-14 Experiment Launcher Pass
+
+Added a practice-first launcher for the online platform.
+
+Artifacts produced:
+
+- `platform/labs.html`
+- Updated `platform/styles.css`
+- Updated `.vscode/tasks.json`
+- Updated `tools/build_online_platform.py`
+- Updated `docs/online_platform.md`
+- Updated `docs/vscode_learning.md`
+
+Quality checks:
+
+- The online platform now has a dedicated experiment launcher linking every JupyterLite notebook.
+- Codespaces is presented as the route for full casebook execution, verification, and site building.
+- VS Code tasks now cover online install, online build, online serve, and full casebook execution.
+- JupyterLite static image fallbacks are copied under `/lite/lab/assets/figures/` to avoid notebook image 404s.
+
+Next quality target:
+
+- Add answer keys or self-check rubrics below the practice tasks.
+
 
 ## Reflection Template
 

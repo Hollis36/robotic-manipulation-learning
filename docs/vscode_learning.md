@@ -8,27 +8,27 @@ This guide is the quickest way to study this repository inside VS Code.
 2. Install the recommended extensions when VS Code prompts you.
 3. Open the Command Palette with `Cmd-Shift-P`.
 4. Run `Tasks: Run Task`.
-5. Choose `RML: Install Book Environment`.
+5. Choose `RML: Install Online Platform Environment`.
 
-This installs the Jupyter Book dependencies and the local `src/rml` package.
+This installs the Jupyter Book dependencies, JupyterLite build dependencies, and the local `src/rml` package.
 
 ## Daily Start
 
 Run:
 
 ```text
-Tasks: Run Task -> RML: Serve Jupyter Book
+Tasks: Run Task -> RML: Serve Online Platform
 ```
 
 Open the printed local URL, usually:
 
 ```text
-http://localhost:3000
+http://localhost:8000
 ```
 
 Keep VS Code beside the browser:
 
-- Browser: read the rendered book.
+- Browser: use the online platform, experiment launcher, rendered book, and JupyterLite.
 - VS Code editor: inspect Markdown, notebooks, casebook scripts, and `src/rml` code.
 - VS Code terminal: run tasks and casebook examples.
 
@@ -59,6 +59,12 @@ The first case demonstrates homogeneous transforms and frame composition. While 
 A_from_B @ B_from_C = A_from_C
 ```
 
+To run the full casebook in Codespaces or local VS Code:
+
+```text
+Tasks: Run Task -> RML: Run All Casebook Examples
+```
+
 ## Verification Loop
 
 Before committing learning changes, run:
@@ -74,10 +80,14 @@ This runs tests, repository scoring, casebook scripts, book figure generation, n
 | Task | Use it when |
 | --- | --- |
 | `RML: Install Book Environment` | first setup or dependency refresh |
+| `RML: Install Online Platform Environment` | setup for GitHub Pages, JupyterLite, and local package work |
 | `RML: Serve Jupyter Book` | start reading the rendered book |
 | `RML: Build Jupyter Book` | check static HTML generation |
+| `RML: Build Online Platform` | build `_site/` with launch page, book, and JupyterLite |
+| `RML: Serve Online Platform` | preview the full learning platform locally |
 | `RML: Regenerate Book Figures` | update page visuals |
 | `RML: Regenerate Notebooks` | rebuild generated notebooks |
+| `RML: Run All Casebook Examples` | execute the full runnable case collection |
 | `RML: Verify Repository` | check everything before saving progress |
 
 ## Reflection Template

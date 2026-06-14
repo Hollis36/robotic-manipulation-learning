@@ -9,6 +9,13 @@
       "problemMatcher": []
     },
     {
+      "label": "RML: Install Online Platform Environment",
+      "type": "shell",
+      "command": "make online-install",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
       "label": "RML: Verify Repository",
       "type": "shell",
       "command": "make verify",
@@ -34,6 +41,21 @@
       "problemMatcher": []
     },
     {
+      "label": "RML: Build Online Platform",
+      "type": "shell",
+      "command": "make online-build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Serve Online Platform",
+      "type": "shell",
+      "command": "make online-serve",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
       "label": "RML: Regenerate Book Figures",
       "type": "shell",
       "command": "make book-figures",
@@ -51,6 +73,13 @@
       "label": "RML: Run First Casebook Example",
       "type": "shell",
       "command": "PYTHONPATH=src python casebook/001_spatial_transforms_numpy/run.py",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "RML: Run All Casebook Examples",
+      "type": "shell",
+      "command": "make casebook",
       "group": "test",
       "problemMatcher": []
     }

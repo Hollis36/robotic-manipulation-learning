@@ -172,3 +172,13 @@ The next DSE target was GitHub-hosted online execution. The repository now build
 - a JupyterLite browser coding environment under `/lite/`.
 
 JupyterLite is used for lightweight in-browser Python notebooks. GitHub Codespaces is configured as the full online programming environment for tests, package installs, and site builds. The repository scorer now tracks `online_platform` as a separate category.
+
+## Experiment Launcher Pass
+
+The next DSE target was practice navigation. The platform now includes `platform/labs.html`, a dedicated launcher for:
+
+- all seven JupyterLite notebook experiments,
+- the full casebook route through GitHub Codespaces,
+- VS Code tasks for online install, online build, online serve, full casebook execution, and verification.
+
+The online build also copies book figures into `/lite/lab/assets/figures/` so notebook image requests have a static fallback path in addition to JupyterLite's contents API.

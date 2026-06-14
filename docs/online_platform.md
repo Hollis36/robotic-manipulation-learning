@@ -9,6 +9,7 @@ The GitHub Pages artifact is built into `_site/` and contains three learning sur
 | Path | Purpose |
 | --- | --- |
 | `/` | Platform launch page |
+| `/labs.html` | Experiment launcher for notebooks and casebook work |
 | `/book/` | Rendered Jupyter Book |
 | `/lite/lab/index.html` | JupyterLite browser coding environment |
 
@@ -36,6 +37,10 @@ The first online notebook is:
 lite/lab/index.html?path=notebooks/02_transforms_kinematics_ik.ipynb
 ```
 
+The experiment launcher at `/labs.html` lists all browser notebooks and the
+casebook route for Codespaces. Use it as the main practice dashboard after
+reading each book chapter.
+
 ## Full Online Programming With Codespaces
 
 JupyterLite is ideal for lightweight Python notebooks. For full online programming, compiling, testing, and Git operations, use GitHub Codespaces. The `.devcontainer/devcontainer.json` file installs the book, online platform, and local package dependencies automatically.
@@ -46,6 +51,16 @@ After a Codespace opens, run:
 make verify
 make online-build
 make online-serve
+```
+
+The same flow is available from the VS Code task picker:
+
+```text
+RML: Install Online Platform Environment
+RML: Build Online Platform
+RML: Serve Online Platform
+RML: Run All Casebook Examples
+RML: Verify Repository
 ```
 
 ## GitHub Pages Deployment

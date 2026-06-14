@@ -120,6 +120,7 @@ def score_repository(root: Path) -> dict:
     vscode_passed = _count_existing(vscode_required)
     online_required = [
         root / "platform" / "index.html",
+        root / "platform" / "labs.html",
         root / "platform" / "styles.css",
         root / "requirements-online.txt",
         root / "tools" / "prepare_lite_workspace.py",

@@ -28,8 +28,10 @@ def run(command: list[str], cwd: Path = PROJECT_ROOT, env: dict[str, str] | None
 
 def copy_platform_shell(site_root: Path) -> None:
     site_root.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(PROJECT_ROOT / "platform" / "index.html", site_root / "index.html")
-    shutil.copy2(PROJECT_ROOT / "platform" / "styles.css", site_root / "styles.css")
+    for html_file in (PROJECT_ROOT / "platform").glob("*.html"):
+        shutil.copy2(html_file, site_root / html_file.name)
+    for css_file in (PROJECT_ROOT / "platform").glob("*.css"):
+        shutil.copy2(css_file, site_root / css_file.name)
     figures_root = site_root / "assets" / "figures"
     figures_root.mkdir(parents=True, exist_ok=True)
     shutil.copy2(PROJECT_ROOT / "book" / "assets" / "figures" / "intro.png", figures_root / "intro.png")
@@ -59,6 +61,15 @@ def build_lite(site_root: Path) -> None:
             str(site_root / "lite"),
         ]
     )
+    copy_lite_lab_assets(site_root)
+
+
+def copy_lite_lab_assets(site_root: Path) -> None:
+    source = PROJECT_ROOT / "book" / "assets" / "figures"
+    target = site_root / "lite" / "lab" / "assets" / "figures"
+    target.mkdir(parents=True, exist_ok=True)
+    for figure in source.glob("*.png"):
+        shutil.copy2(figure, target / figure.name)
 
 
 def build_online_platform(site_root: Path | str = SITE_ROOT) -> Path:

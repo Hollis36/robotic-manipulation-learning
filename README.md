@@ -11,7 +11,7 @@ The repository is organized as a personal learning casebook rather than a copy o
 - **Jupyter Book path:** the casebook is also organized as an interactive learning book under `book/`.
 - **Book page visuals:** every Jupyter Book page has a generated visual map under `book/assets/figures/`.
 - **VS Code workflow:** `.vscode/` tasks and `docs/vscode_learning.md` make the book, notebooks, and casebook easy to run from the editor.
-- **Online platform:** `platform/`, JupyterLite, and Codespaces turn the repository into a GitHub-hosted learning site with browser coding.
+- **Online platform:** `platform/`, the experiment launcher, JupyterLite, and Codespaces turn the repository into a GitHub-hosted learning site with browser coding.
 - **Pages publishing:** `.github/workflows/pages.yml` builds the full online platform for GitHub Pages.
 - **Process visualizations:** selected algorithms include storyboards that show convergence or search over time.
 - **Deep companion docs:** course map, learning tracks, Drake setup, capstone portfolio, and external resources are separated from chapter notes.
@@ -69,6 +69,7 @@ references/ How local source PDFs are used without republishing them.
 - 10 generated Jupyter Book page figures are available in `book/assets/figures/`.
 - VS Code tasks are available for setup, book serving, verification, figure generation, and the first casebook run.
 - The online platform builds to `_site/` with a launch page, rendered book, and JupyterLite browser coding workspace.
+- The experiment launcher at `platform/labs.html` links every online notebook and the full Codespaces casebook route.
 - GitHub Pages deployment is configured for the full online platform; deployment runs automatically when the repository is public.
 - 9 generated casebook figures are available in `docs/casebook_visual_index.md`.
 - 2 generated process storyboards are available in `docs/process_visualizations.md`.
