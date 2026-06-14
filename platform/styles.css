@@ -110,7 +110,7 @@ h1 {
 
 .launch-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-top: 14px;
 }
@@ -154,6 +154,10 @@ h1 {
   margin: 28px 0 34px;
   background: var(--line);
   border: 1px solid var(--line);
+}
+
+.route-strip--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .route-strip div {

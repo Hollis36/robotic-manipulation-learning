@@ -354,6 +354,34 @@ Next quality target:
 
 - Add answer keys or self-check rubrics below the practice tasks.
 
+## 2026-06-14 Colab Learning Pass
+
+Upgraded the repository into a Colab-friendly learning project.
+
+Artifacts produced:
+
+- `docs/colab.md`
+- `platform/colab.html`
+- `tests/test_colab_project.py`
+- Updated `tools/generate_jupyter_book_notebooks.py`
+- Updated generated notebooks in `book/*.ipynb`
+- Updated `platform/index.html`
+- Updated `platform/labs.html`
+- Updated `platform/styles.css`
+- Updated `docs/online_platform.md`
+- Updated `docs/repository_quality_standard.md`
+
+Quality checks:
+
+- Every generated learning notebook now includes a setup cell that detects `google.colab`, clones the public repository with `git clone --depth 1`, and adds `src/` to `sys.path`.
+- The public platform includes a dedicated Colab page with links to every learning notebook.
+- The experiment launcher now presents JupyterLite, Google Colab, and Codespaces as separate execution modes.
+- Repository score now tracks `colab_project`.
+
+Next quality target:
+
+- Add answer keys or self-check rubrics below the practice tasks.
+
 
 ## Reflection Template
 

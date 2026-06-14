@@ -1,5 +1,7 @@
 # Robotic Manipulation Learning
 
+[![Open first notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/02_transforms_kinematics_ik.ipynb)
+
 这是我的机器人操作学习仓库，围绕 *Robotic Manipulation: Perception, Planning, and Control* 建立章节笔记、数学推导、可运行小案例和后续 Drake 实验。
 
 The repository is organized as a personal learning casebook rather than a copy of the source notes. Each chapter has a study folder, and the `casebook/` directory contains runnable examples that turn core ideas into code.
@@ -12,6 +14,7 @@ The repository is organized as a personal learning casebook rather than a copy o
 - **Book page visuals:** every Jupyter Book page has a generated visual map under `book/assets/figures/`.
 - **VS Code workflow:** `.vscode/` tasks and `docs/vscode_learning.md` make the book, notebooks, and casebook easy to run from the editor.
 - **Online platform:** `platform/`, the experiment launcher, JupyterLite, and Codespaces turn the repository into a GitHub-hosted learning site with browser coding.
+- **Google Colab path:** every learning notebook can open in Colab and bootstrap the repository source automatically.
 - **Pages publishing:** `.github/workflows/pages.yml` builds the full online platform for GitHub Pages.
 - **Process visualizations:** selected algorithms include storyboards that show convergence or search over time.
 - **Deep companion docs:** course map, learning tracks, Drake setup, capstone portfolio, and external resources are separated from chapter notes.
@@ -36,6 +39,7 @@ references/ How local source PDFs are used without republishing them.
 | --- | --- |
 | understand the whole course | `docs/deep_course_companion.md` |
 | learn through notebooks | `book/intro.md` |
+| open cloud notebooks in Colab | `docs/colab.md` |
 | use the online learning platform | `docs/online_platform.md` |
 | study inside VS Code | `docs/vscode_learning.md` |
 | operate the Jupyter Book workflow | `docs/book_workflow.md` |
@@ -66,6 +70,7 @@ references/ How local source PDFs are used without republishing them.
 - 11 chapter folders are scaffolded for reading notes, exercises, concept work, and future Drake labs.
 - 9 runnable casebook examples are available.
 - 7 Jupyter notebooks are available in `book/` for interactive study.
+- 7 Colab-ready notebook links are available through `docs/colab.md` and the online platform.
 - 10 generated Jupyter Book page figures are available in `book/assets/figures/`.
 - VS Code tasks are available for setup, book serving, verification, figure generation, and the first casebook run.
 - The online platform builds to `_site/` with a launch page, rendered book, and JupyterLite browser coding workspace.

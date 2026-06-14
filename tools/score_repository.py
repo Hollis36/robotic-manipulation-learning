@@ -130,6 +130,13 @@ def score_repository(root: Path) -> dict:
         root / ".github" / "workflows" / "pages.yml",
     ]
     online_passed = _count_existing(online_required)
+    colab_required = [
+        root / "docs" / "colab.md",
+        root / "platform" / "colab.html",
+        root / "tools" / "generate_jupyter_book_notebooks.py",
+        root / "book" / "02_transforms_kinematics_ik.ipynb",
+    ]
+    colab_passed = _count_existing(colab_required)
 
     categories = {
         "top_level_docs": _category(round(top_level_passed / len(top_level_required) * 100), top_level_passed, len(top_level_required)),
@@ -146,13 +153,14 @@ def score_repository(root: Path) -> dict:
         "book_visuals": _category(round(book_visuals_passed / len(book_visuals) * 100), book_visuals_passed, len(book_visuals)),
         "vscode_learning": _category(round(vscode_passed / len(vscode_required) * 100), vscode_passed, len(vscode_required)),
         "online_platform": _category(round(online_passed / len(online_required) * 100), online_passed, len(online_required)),
+        "colab_project": _category(round(colab_passed / len(colab_required) * 100), colab_passed, len(colab_required)),
     }
 
     weights = {
         "top_level_docs": 0.13,
         "chapter_coverage": 0.13,
-        "casebook": 0.14,
-        "tests": 0.15,
+        "casebook": 0.13,
+        "tests": 0.14,
         "deep_learning_docs": 0.11,
         "ci": 0.09,
         "visual_assets": 0.07,
@@ -163,6 +171,7 @@ def score_repository(root: Path) -> dict:
         "book_visuals": 0.02,
         "vscode_learning": 0.02,
         "online_platform": 0.02,
+        "colab_project": 0.02,
     }
     total_score = round(sum(categories[name]["score"] * weight for name, weight in weights.items()))
     recommendations = []

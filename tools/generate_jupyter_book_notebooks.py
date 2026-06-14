@@ -12,9 +12,21 @@ BOOK_ROOT = Path(__file__).resolve().parents[1] / "book"
 COMMON_SETUP = """from pathlib import Path
 import sys
 
+COLAB_REPO_URL = "https://github.com/Hollis36/robotic-manipulation-learning.git"
+
 PROJECT_ROOT = Path.cwd()
 if not (PROJECT_ROOT / "src").exists():
-    PROJECT_ROOT = PROJECT_ROOT.parent
+    in_colab = "google.colab" in sys.modules
+    if in_colab:
+        import subprocess
+
+        PROJECT_ROOT = Path("/content/robotic-manipulation-learning")
+        if not PROJECT_ROOT.exists():
+            # Equivalent command: git clone --depth 1 <repo> <target>
+            subprocess.run(["git", "clone", "--depth", "1", COLAB_REPO_URL, str(PROJECT_ROOT)], check=True)
+    else:
+        PROJECT_ROOT = PROJECT_ROOT.parent
+
 if str(PROJECT_ROOT / "src") not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT / "src"))
 

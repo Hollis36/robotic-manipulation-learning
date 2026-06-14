@@ -33,7 +33,7 @@ Current state:
 - First verified deployed commit: `2a86495`
 - GitHub Actions `tests`: passed
 - GitHub Actions `pages`: build passed, uploaded the Pages artifact, and deployed successfully
-- Verified public routes: `/`, `/favicon.ico`, `/labs.html`, `/book/`, and `/lite/lab/index.html?path=notebooks/02_transforms_kinematics_ik.ipynb`
+- Verified public routes: `/`, `/favicon.ico`, `/labs.html`, `/colab.html`, `/book/`, and `/lite/lab/index.html?path=notebooks/02_transforms_kinematics_ik.ipynb`
 
 The deploy gate is:
 
@@ -49,5 +49,6 @@ To recheck the published site:
 curl -I -L https://hollis36.github.io/robotic-manipulation-learning/
 curl -I -L https://hollis36.github.io/robotic-manipulation-learning/favicon.ico
 curl -I -L https://hollis36.github.io/robotic-manipulation-learning/labs.html
+curl -I -L https://hollis36.github.io/robotic-manipulation-learning/colab.html
 curl -I -L https://hollis36.github.io/robotic-manipulation-learning/book/
 ```

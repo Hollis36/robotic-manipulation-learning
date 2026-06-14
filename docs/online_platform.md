@@ -10,6 +10,7 @@ The GitHub Pages artifact is built into `_site/` and contains three learning sur
 | --- | --- |
 | `/` | Platform launch page |
 | `/labs.html` | Experiment launcher for notebooks and casebook work |
+| `/colab.html` | Google Colab notebook index |
 | `/book/` | Rendered Jupyter Book |
 | `/lite/lab/index.html` | JupyterLite browser coding environment |
 
@@ -40,6 +41,25 @@ lite/lab/index.html?path=notebooks/02_transforms_kinematics_ik.ipynb
 The experiment launcher at `/labs.html` lists all browser notebooks and the
 casebook route for Codespaces. Use it as the main practice dashboard after
 reading each book chapter.
+
+## Cloud Notebooks With Google Colab
+
+The Colab route is:
+
+```text
+colab.html
+```
+
+It links every generated learning notebook through:
+
+```text
+https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/<notebook>.ipynb
+```
+
+Each notebook includes a setup cell that detects `google.colab`, clones the
+public repository with `git clone --depth 1`, and adds `src/` to `sys.path`.
+This keeps the same notebook usable in Colab, JupyterLite, Codespaces, and a
+local checkout.
 
 ## Full Online Programming With Codespaces
 
@@ -81,7 +101,7 @@ Current deployment:
 - Repository: `Hollis36/robotic-manipulation-learning`
 - Public URL: <https://hollis36.github.io/robotic-manipulation-learning/>
 - Pages source: GitHub Actions workflow
-- Published routes: `/`, `/labs.html`, `/book/`, and `/lite/lab/index.html`
+- Published routes: `/`, `/labs.html`, `/colab.html`, `/book/`, and `/lite/lab/index.html`
 
 The deploy job is still gated to public repositories:
 

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Colab 学习入口 - Robotic Manipulation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell shell--compact">
+      <nav class="topline" aria-label="Platform navigation">
+        <a class="back-link" href="index.html">在线学习平台</a>
+        <a class="back-link" href="labs.html">实验导航</a>
+        <a class="back-link" href="book/">课程学习书</a>
+        <a class="back-link" href="https://github.com/Hollis36/robotic-manipulation-learning/blob/main/docs/colab.md">Colab 指南</a>
+      </nav>
+
+      <section class="lab-hero" aria-labelledby="colab-title">
+        <p class="eyebrow">GOOGLE COLAB NOTEBOOKS</p>
+        <h1 id="colab-title">Colab 学习入口</h1>
+        <p class="summary">
+          用 Google Colab 打开公开仓库中的 notebook。每个 notebook 的首个 setup cell 会自动 clone 仓库并加载 `src/rml`，适合快速运行矩阵、几何、规划、控制和强化学习小实验。
+        </p>
+      </section>
+
+      <section class="route-strip route-strip--three" aria-label="Execution modes">
+        <div>
+          <span class="kicker">FAST NOTEBOOK</span>
+          <strong>Google Colab</strong>
+          <span>适合云端 Python notebook、参数修改和结果记录。</span>
+        </div>
+        <div>
+          <span class="kicker">STATIC BROWSER</span>
+          <strong>JupyterLite</strong>
+          <span>无需登录，在浏览器里运行轻量实验。</span>
+        </div>
+        <div>
+          <span class="kicker">FULL IDE</span>
+          <strong>Codespaces</strong>
+          <span>完整 VS Code 环境，可运行测试、casebook 和站点构建。</span>
+        </div>
+      </section>
+
+      <section aria-labelledby="colab-notebooks-title">
+        <h2 id="colab-notebooks-title" class="section-title">Open In Colab</h2>
+        <div class="lab-grid">
+          <a class="lab-card" href="https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/02_transforms_kinematics_ik.ipynb">
+            <span class="lab-meta">02</span>
+            <strong>Transforms, Kinematics, IK</strong>
+            <span>坐标变换、平面机械臂和 differential IK。</span>
+          </a>
+          <a class="lab-card" href="https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/03_geometric_perception_icp.ipynb">
+            <span class="lab-meta">03</span>
+            <strong>Geometric Perception And ICP</strong>
+            <span>点云配准、位姿估计和几何误差。</span>
+          </a>
+          <a class="lab-card" href="https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/04_grasp_scoring.ipynb">
+            <span class="lab-meta">04</span>
+            <strong>Grasp Scoring</strong>
+            <span>候选抓取排序和接触平衡直觉。</span>
+          </a>
+          <a class="lab-card" href="https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/05_motion_planning_rrt.ipynb">
+            <span class="lab-meta">05</span>
+            <strong>Motion Planning With RRT</strong>
+            <span>采样规划、碰撞检测和路径回溯。</span>
+          </a>
+          <a class="lab-card" href="https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/06_control_pd_impedance.ipynb">
+            <span class="lab-meta">06</span>
+            <strong>PD And Impedance Control</strong>
+            <span>二阶系统响应、阻尼和控制输入。</span>
+          </a>
+          <a class="lab-card" href="https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/07_segmentation_to_grasp.ipynb">
+            <span class="lab-meta">07</span>
+            <strong>Segmentation To Grasp</strong>
+            <span>分割 mask、目标点云和下游抓取。</span>
+          </a>
+          <a class="lab-card" href="https://colab.research.google.com/github/Hollis36/robotic-manipulation-learning/blob/main/book/08_rl_gridworld.ipynb">
+            <span class="lab-meta">08</span>
+            <strong>RL Grasping Gridworld</strong>
+            <span>state、action、reward 和小规模策略推理。</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="workflow" aria-label="Colab workflow">
+        <div>
+          <h2>Colab 使用流</h2>
+          <ol>
+            <li>打开一个 notebook 后先运行第一个 setup cell。</li>
+            <li>完整运行一次示例，确认输出和章节概念对应。</li>
+            <li>按 Practice Task 修改参数，比较结果变化。</li>
+            <li>需要运行测试或提交代码时切换到 Codespaces。</li>
+          </ol>
+        </div>
+        <div class="terminal">
+          <span>git clone --depth 1</span>
+          <span>sys.path.insert(.../src)</span>
+          <span>from rml import ...</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

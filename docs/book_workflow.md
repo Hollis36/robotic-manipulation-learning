@@ -104,6 +104,8 @@ The workflow `.github/workflows/pages.yml` builds the online platform on pushes 
 The published artifact contains:
 
 - `/`: online platform launch page.
+- `/labs.html`: experiment launcher.
+- `/colab.html`: Google Colab notebook index.
 - `/book/`: rendered Jupyter Book.
 - `/lite/lab/index.html`: JupyterLite browser coding environment.
 
