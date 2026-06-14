@@ -162,3 +162,13 @@ The next DSE target was editor ergonomics. The repository now includes tracked V
 - `docs/vscode_learning.md`
 
 The tasks call the same `Makefile` targets used by CI and local verification, so VS Code remains a thin convenience layer rather than a separate workflow. The repository scorer now tracks `vscode_learning` as a separate category.
+
+## Online Platform Pass
+
+The next DSE target was GitHub-hosted online execution. The repository now builds a full `_site/` artifact containing:
+
+- a platform launch page from `platform/`,
+- the rendered Jupyter Book under `/book/`,
+- a JupyterLite browser coding environment under `/lite/`.
+
+JupyterLite is used for lightweight in-browser Python notebooks. GitHub Codespaces is configured as the full online programming environment for tests, package installs, and site builds. The repository scorer now tracks `online_platform` as a separate category.

@@ -31,15 +31,19 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-book.txt
+          pip install -r requirements-online.txt
           pip install -e .
-      - name: Build Jupyter Book HTML
+      - name: Build generated learning assets
         run: |
-          cd book
-          jupyter-book build --html --strict
+          make book-figures
+          make notebooks
+      - name: Build online learning platform
+        run: |
+          python tools/build_online_platform.py
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: book/_build/html
+          path: _site
 
   deploy:
     if: github.ref == 'refs/heads/main' && github.event.repository.private == false

@@ -99,7 +99,13 @@ make verify
 
 ## GitHub Pages
 
-The workflow `.github/workflows/pages.yml` builds the Jupyter Book HTML on pushes to `main` and uploads `book/_build/html` as a GitHub Pages artifact.
+The workflow `.github/workflows/pages.yml` builds the online platform on pushes to `main` and uploads `_site/` as a GitHub Pages artifact.
+
+The published artifact contains:
+
+- `/`: online platform launch page.
+- `/book/`: rendered Jupyter Book.
+- `/lite/lab/index.html`: JupyterLite browser coding environment.
 
 The current repository is a private repository, and the current GitHub plan does not support GitHub Pages for it. Because of that, deployment is gated to public repositories:
 

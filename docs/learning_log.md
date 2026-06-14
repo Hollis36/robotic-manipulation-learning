@@ -259,6 +259,32 @@ Next quality target:
 
 - Add answer keys or self-check rubrics below the practice tasks.
 
+## 2026-06-14 Online Platform Pass
+
+Turned the repository into a GitHub-hosted learning platform architecture.
+
+Artifacts produced:
+
+- `platform/index.html`
+- `platform/styles.css`
+- `requirements-online.txt`
+- `tools/prepare_lite_workspace.py`
+- `tools/build_online_platform.py`
+- `.devcontainer/devcontainer.json`
+- `docs/online_platform.md`
+- `tests/test_online_platform.py`
+
+Quality checks:
+
+- GitHub Pages now builds `_site/` with a platform launch page, rendered Jupyter Book, and JupyterLite browser coding workspace.
+- JupyterLite receives generated notebooks, book figures, and the pure-Python `src/rml` package.
+- Codespaces provides the full online programming and testing environment.
+- Repository score now tracks `online_platform`.
+
+Next quality target:
+
+- Add answer keys or self-check rubrics below the practice tasks.
+
 
 ## Reflection Template
 

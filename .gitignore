@@ -3,12 +3,16 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.jupyterlite.doit.db
+*.egg-info/
 .venv/
 venv/
 env/
 .DS_Store
 outputs/
 _build/
+_site/
+_online/
 casebook/*/outputs/*
 dse_results/outputs/
 book/_build/
