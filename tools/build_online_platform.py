@@ -46,6 +46,7 @@ def copy_book(site_root: Path) -> None:
         env={"BASE_URL": book_base_url},
     )
     shutil.copytree(book_output, site_root / "book", dirs_exist_ok=True)
+    shutil.copy2(book_output / "favicon.ico", site_root / "favicon.ico")
 
 
 def build_lite(site_root: Path) -> None:

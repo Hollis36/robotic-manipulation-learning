@@ -64,6 +64,7 @@ def test_jupyterlite_requirements_and_build_scripts_exist():
     assert "BOOK_BASE_URL" in build_script
     assert '"BASE_URL"' in build_script
     assert "copy_lite_lab_assets" in build_script
+    assert "favicon.ico" in build_script
 
 
 def test_build_script_bootstraps_project_root_for_direct_execution():
